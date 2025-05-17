@@ -7,4 +7,20 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f8ff;
+}
+
+.hero h1 {
+    color: #0066cc;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #333;
+    font-size: 1.2em;
 } 
