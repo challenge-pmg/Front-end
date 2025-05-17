@@ -72,4 +72,29 @@ footer {
 
 .membro a:hover {
     text-decoration: underline;
+}
+
+.faq {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.pergunta {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.pergunta:last-child {
+    border-bottom: none;
+}
+
+.pergunta h2 {
+    color: #0066cc;
+    font-size: 1.1em;
+    margin-bottom: 5px;
 } 
