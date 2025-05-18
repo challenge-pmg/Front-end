@@ -25,6 +25,12 @@ header {
     transition: background 0.3s;
 }
 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -41,7 +47,6 @@ header {
 
 nav ul {
     display: flex;
-    justify-content: flex-end;
     list-style: none;
     gap: 2rem;
 }
