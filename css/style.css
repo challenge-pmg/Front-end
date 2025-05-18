@@ -255,4 +255,14 @@ footer {
 
 section {
     padding: 0 2rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+header, footer, section {
+    width: 100%;
 } 
