@@ -7,6 +7,32 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background: #f9fafb;
+    color: #111827;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #0066cc;
 }
 
 .hero {
@@ -55,7 +81,7 @@ body {
 }
 
 footer {
-    background: #0066cc;
+    background: #111827;
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -69,17 +95,17 @@ footer {
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
     text-align: center;
 }
 
 .membro {
     margin-top: 30px;
     padding: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #e5e7eb;
     border-radius: 8px;
     display: inline-block;
-    background: #f9f9f9;
+    background: #fff;
 }
 
 .membro img {
@@ -90,7 +116,7 @@ footer {
 
 .membro h2 {
     margin: 10px 0 5px 0;
-    color: #0066cc;
+    color: #111827;
 }
 
 .membro a {
@@ -109,13 +135,13 @@ footer {
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
 }
 
 .pergunta {
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .pergunta:last-child {
@@ -123,7 +149,7 @@ footer {
 }
 
 .pergunta h2 {
-    color: #0066cc;
+    color: #111827;
     font-size: 1.1em;
     margin-bottom: 5px;
 }
@@ -134,7 +160,7 @@ footer {
     padding: 20px;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
 }
 
 .contato form {
@@ -145,13 +171,13 @@ footer {
 
 .contato label {
     font-weight: bold;
-    color: #0066cc;
+    color: #111827;
 }
 
 .contato input,
 .contato textarea {
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #e5e7eb;
     border-radius: 4px;
     font-size: 1em;
 }
