@@ -15,11 +15,33 @@ header {
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
     padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     list-style: none;
     gap: 2rem;
 }
@@ -33,6 +55,25 @@ nav a {
 
 nav a:hover {
     color: #0066cc;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 100%;
+        border-top: 1px solid #e5e7eb;
+    }
+    nav ul.active {
+        display: flex;
+    }
 }
 
 .hero {
