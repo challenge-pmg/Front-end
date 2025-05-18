@@ -8,41 +8,47 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="integrantes.html">Integrantes</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <div class="logo">TeleSaúde HC</div>
+            <button class="hamburger">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="integrantes.html">Integrantes</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section class="hero">
             <div class="hero-bg"></div>
-            <div class="hero-content">
-                <h1>Fale com a gente</h1>
-                <p>Entre em contato</p>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Contato</h1>
+                    <p>Entre em contato conosco</p>
+                </div>
             </div>
         </section>
         <section class="contato">
-            <h1>Fale com a gente</h1>
-            <form>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-
-                <button type="submit">Enviar</button>
-            </form>
+            <div class="container">
+                <form>
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" name="mensagem" required></textarea>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2025 TeleSaúde HC - Hospital das Clínicas</p>
+        <div class="container">
+            <p>&copy; 2025 TeleSaúde HC - Hospital das Clínicas</p>
+        </div>
     </footer>
 </body>
 </html> 
