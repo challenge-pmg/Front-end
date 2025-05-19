@@ -15,14 +15,10 @@ header {
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
     padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s;
 }
 
 header .container {
@@ -55,40 +51,10 @@ nav a {
     color: #374151;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s;
 }
 
 nav a:hover {
     color: #0066cc;
-}
-
-@media (max-width: 768px) {
-    header .container {
-        justify-content: flex-start;
-    }
-    .hamburger {
-        display: block;
-        margin-right: 0.5rem;
-    }
-    .logo {
-        margin-right: auto;
-    }
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #fff;
-        width: 100%;
-        border-top: 1px solid #e5e7eb;
-    }
-    nav ul.active {
-        display: flex;
-    }
-    nav ul .container {
-        padding: 1rem;
-    }
 }
 
 .container {
@@ -101,11 +67,10 @@ nav a:hover {
 .hero {
     position: relative;
     text-align: center;
-    padding: 120px 0 50px 0;
-    min-height: 300px;
+    padding: 120px 0 80px 0;
+    min-height: 400px;
     overflow: hidden;
     background: #f0f8ff;
-    width: 100%;
 }
 
 .hero-bg {
@@ -115,7 +80,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     background: url('../assets/images/hero.jpeg') center center/cover no-repeat;
-    filter: blur(6px) brightness(0.7);
+    filter: brightness(0.7) blur(8px);
     z-index: 1;
 }
 
@@ -123,146 +88,79 @@ nav a:hover {
     position: relative;
     z-index: 2;
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
     font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .hero-content p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #e0e0e0;
+    margin-bottom: 2rem;
 }
 
-.hero-img {
-    max-width: 220px;
+.features {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    padding: 2rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.feature-card img {
     width: 100%;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
-footer {
-    background: #111827;
-    color: #fff;
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
+}
+
+.feature-card p {
+    color: #6b7280;
+}
+
+.team {
+    padding: 80px 0 120px 0;
+    background: #f9fafb;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.team-member {
+    padding: 2.5rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    font-size: 0.95em;
 }
 
-.integrantes {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-    text-align: center;
-}
-
-.membro {
-    margin-top: 30px;
-    padding: 20px;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    display: inline-block;
-    background: #fff;
-}
-
-.membro img {
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 2px solid #0066cc;
-}
-
-.membro h2 {
-    margin: 10px 0 5px 0;
-    color: #111827;
-}
-
-.membro a {
-    color: #0066cc;
-    text-decoration: none;
-    margin: 0 5px;
-}
-
-.membro a:hover {
-    text-decoration: underline;
-}
-
-.faq {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-}
-
-.pergunta {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-.pergunta:last-child {
-    border-bottom: none;
-}
-
-.pergunta h2 {
-    color: #111827;
-    font-size: 1.1em;
-    margin-bottom: 5px;
-}
-
-.contato {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
-}
-
-.contato form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.contato label {
-    font-weight: bold;
-    color: #111827;
-}
-
-.contato input,
-.contato textarea {
-    padding: 8px;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-.contato button {
-    background: #0066cc;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 4px;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.2s;
-}
-
-.contato button:hover {
-    background: #004a99;
-}
-
-.avatar {
+.team-member .avatar {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -271,15 +169,161 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
-    margin: 0 auto 15px;
-    border: 1px solid rgba(0, 102, 204, 0.3);
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
 }
 
-section {
-    padding: 0 2rem;
+.team-member h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #111827;
 }
 
-header, footer, section {
+.team-member p {
+    color: #6b7280;
+    margin-bottom: 1rem;
+}
+
+.team-member .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.team-member .social-links a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.team-member .social-links a:hover {
+    text-decoration: underline;
+}
+
+.faq {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pergunta {
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.pergunta h2 {
+    font-size: 1.1rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.pergunta p {
+    color: #6b7280;
+    display: none;
+}
+
+.pergunta.active p {
+    display: block;
+}
+
+.contato {
+    padding: 80px 0;
+    background: #f9fafb;
+}
+
+.contato form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.contato label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #111827;
+    font-weight: bold;
+}
+
+.contato input,
+.contato textarea {
     width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.contato button {
+    background: #0066cc;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.contato button:hover {
+    background: #0052a3;
+}
+
+footer {
+    background: #111827;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    header .container {
+        justify-content: flex-start;
+    }
+    
+    .hamburger {
+        display: block;
+        margin-right: 0.5rem;
+    }
+    
+    .logo {
+        margin-right: auto;
+    }
+    
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 100%;
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul .container {
+        padding: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
 } 
