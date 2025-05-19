@@ -201,7 +201,7 @@ nav a:hover {
 }
 
 .faq {
-    padding: 80px 0;
+    padding: 80px 0 120px 0;
     background: #fff;
 }
 
@@ -217,21 +217,46 @@ nav a:hover {
     border: 1px solid #e5e7eb;
     margin-bottom: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pergunta:hover {
+    background: #f3f4f6;
 }
 
 .pergunta h2 {
     font-size: 1.1rem;
     color: #111827;
     margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pergunta h2::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #0066cc;
+    transition: transform 0.3s ease;
+}
+
+.pergunta.active h2::after {
+    content: '-';
+    transform: rotate(180deg);
 }
 
 .pergunta p {
     color: #6b7280;
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, margin 0.3s ease;
+    margin-top: 0;
+    line-height: 1.6;
 }
 
 .pergunta.active p {
-    display: block;
+    max-height: 200px;
+    margin-top: 1rem;
 }
 
 .contato {
