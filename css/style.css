@@ -14,7 +14,7 @@ body {
 header {
     background: #fff;
     border-bottom: 1px solid #e5e7eb;
-    padding: 1rem 2rem;
+    padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,8 +63,15 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
+    header .container {
+        justify-content: flex-start;
+    }
     .hamburger {
         display: block;
+        margin-right: 0.5rem;
+    }
+    .logo {
+        margin-right: auto;
     }
     nav ul {
         display: none;
@@ -78,6 +85,9 @@ nav a:hover {
     }
     nav ul.active {
         display: flex;
+    }
+    nav ul .container {
+        padding: 1rem;
     }
 }
 
@@ -117,13 +127,13 @@ nav a:hover {
 }
 
 .hero-content h1 {
-    color: #fff;
+    font-size: 3rem;
     margin-bottom: 20px;
 }
 
 .hero-content p {
+    font-size: 1.5rem;
     color: #e0e0e0;
-    font-size: 1.2em;
 }
 
 .hero-img {
