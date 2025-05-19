@@ -21,34 +21,75 @@
             </nav>
         </div>
     </header>
+
     <main>
         <section class="hero">
             <div class="hero-bg"></div>
             <div class="container">
                 <div class="hero-content">
-                    <h1>Contato</h1>
-                    <p>Entre em contato conosco</p>
+                    <h1>Entre em Contato</h1>
+                    <p>Estamos aqui para ajudar</p>
                 </div>
             </div>
         </section>
+
         <section class="contato">
             <div class="container">
-                <form>
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="mensagem">Mensagem:</label>
-                    <textarea id="mensagem" name="mensagem" required></textarea>
-                    <button type="submit">Enviar</button>
-                </form>
+                <div class="contato-grid">
+                    <div class="contato-info">
+                        <h2>Informações de Contato</h2>
+                        <div class="info-item">
+                            <h3>Central de Atendimento</h3>
+                            <p>0800 123 4567</p>
+                            <p>Segunda a Sexta, das 7h às 19h</p>
+                        </div>
+                        <div class="info-item">
+                            <h3>E-mail</h3>
+                            <p>telesaude@hc.fm.usp.br</p>
+                        </div>
+                        <div class="info-item">
+                            <h3>Endereço</h3>
+                            <p>Av. Dr. Enéas de Carvalho Aguiar, 255</p>
+                            <p>Cerqueira César - São Paulo/SP</p>
+                        </div>
+                    </div>
+                    <form class="contato-form">
+                        <h2>Envie sua Mensagem</h2>
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="assunto">Assunto</label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="">Selecione um assunto</option>
+                                <option value="agendamento">Agendamento</option>
+                                <option value="duvidas">Dúvidas</option>
+                                <option value="sugestoes">Sugestões</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit">Enviar Mensagem</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
+
     <footer>
         <div class="container">
             <p>&copy; 2025 TeleSaúde HC - Hospital das Clínicas</p>
         </div>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html> 

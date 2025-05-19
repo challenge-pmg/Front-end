@@ -260,37 +260,91 @@ nav a:hover {
 }
 
 .contato {
-    padding: 80px 0;
+    padding: 80px 0 120px 0;
     background: #f9fafb;
 }
 
-.contato form {
-    max-width: 600px;
+.contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1000px;
     margin: 0 auto;
-    background: #fff;
+}
+
+.contato-info {
     padding: 2rem;
+    background: #fff;
     border-radius: 8px;
     border: 1px solid #e5e7eb;
 }
 
-.contato label {
+.contato-info h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    margin-bottom: 2rem;
+}
+
+.info-item h3 {
+    font-size: 1.1rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.info-item p {
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.contato-form {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.contato-form h2 {
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
     color: #111827;
-    font-weight: bold;
+    font-weight: 500;
 }
 
-.contato input,
-.contato textarea {
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #e5e7eb;
     border-radius: 4px;
-    margin-bottom: 1rem;
     font-size: 1rem;
+    color: #111827;
+    background: #f9fafb;
 }
 
-.contato button {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    background: #fff;
+}
+
+.contato-form button {
     background: #0066cc;
     color: #fff;
     padding: 0.75rem 1.5rem;
@@ -298,10 +352,19 @@ nav a:hover {
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
 }
 
-.contato button:hover {
+.contato-form button:hover {
     background: #0052a3;
+}
+
+@media (max-width: 768px) {
+    .contato-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
 footer {
