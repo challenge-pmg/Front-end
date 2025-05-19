@@ -7,13 +7,13 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background: #f9fafb;
-    color: #111827;
+    background: #faf6f1;
+    color: #2d3748;
 }
 
 header {
     background: #fff;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e2e8f0;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -30,7 +30,7 @@ header .container {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #0066cc;
+    color: #e53e3e;
 }
 
 .hamburger {
@@ -48,13 +48,13 @@ nav ul {
 }
 
 nav a {
-    color: #374151;
+    color: #4a5568;
     text-decoration: none;
     font-weight: 500;
 }
 
 nav a:hover {
-    color: #0066cc;
+    color: #e53e3e;
 }
 
 .container {
@@ -70,7 +70,7 @@ nav a:hover {
     padding: 120px 0 80px 0;
     min-height: 400px;
     overflow: hidden;
-    background: #f0f8ff;
+    background: #f8e9d9;
 }
 
 .hero-bg {
@@ -80,7 +80,7 @@ nav a:hover {
     width: 100%;
     height: 100%;
     background: url('../assets/images/hero.jpeg') center center/cover no-repeat;
-    filter: brightness(0.7) blur(8px);
+    filter: brightness(0.5) blur(4px);
     z-index: 1;
 }
 
@@ -95,12 +95,14 @@ nav a:hover {
 .hero-content h1 {
     font-size: 3rem;
     margin-bottom: 1.5rem;
+    color: #fff;
 }
 
 .hero-content p {
     font-size: 1.25rem;
-    color: #e0e0e0;
+    color: #fff;
     margin-bottom: 2rem;
+    opacity: 0.9;
 }
 
 .features {
@@ -261,7 +263,7 @@ nav a:hover {
 
 .contato {
     padding: 80px 0 120px 0;
-    background: #f9fafb;
+    background: #faf6f1;
 }
 
 .contato-grid {
@@ -276,12 +278,12 @@ nav a:hover {
     padding: 2rem;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
 }
 
 .contato-info h2 {
     font-size: 1.5rem;
-    color: #111827;
+    color: #2d3748;
     margin-bottom: 2rem;
 }
 
@@ -291,12 +293,12 @@ nav a:hover {
 
 .info-item h3 {
     font-size: 1.1rem;
-    color: #111827;
+    color: #2d3748;
     margin-bottom: 0.5rem;
 }
 
 .info-item p {
-    color: #6b7280;
+    color: #4a5568;
     margin-bottom: 0.25rem;
 }
 
@@ -304,12 +306,12 @@ nav a:hover {
     padding: 2rem;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
 }
 
 .contato-form h2 {
     font-size: 1.5rem;
-    color: #111827;
+    color: #2d3748;
     margin-bottom: 2rem;
 }
 
@@ -320,7 +322,7 @@ nav a:hover {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #111827;
+    color: #2d3748;
     font-weight: 500;
 }
 
@@ -329,23 +331,23 @@ nav a:hover {
 .form-group textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
     border-radius: 4px;
     font-size: 1rem;
-    color: #111827;
-    background: #f9fafb;
+    color: #2d3748;
+    background: #faf6f1;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #0066cc;
+    border-color: #e53e3e;
     background: #fff;
 }
 
 .contato-form button {
-    background: #0066cc;
+    background: #e53e3e;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border: none;
@@ -357,7 +359,7 @@ nav a:hover {
 }
 
 .contato-form button:hover {
-    background: #0052a3;
+    background: #c53030;
 }
 
 @media (max-width: 768px) {
@@ -368,7 +370,7 @@ nav a:hover {
 }
 
 footer {
-    background: #111827;
+    background: #2d3748;
     color: #fff;
     padding: 2rem 0;
     text-align: center;
@@ -425,20 +427,26 @@ footer {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 3rem;
-    color: #111827;
+    color: #2d3748;
 }
 
 .beneficios .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+}
+
+.beneficios .card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
 }
 
 .beneficios .card {
     padding: 0;
-    background: #f9fafb;
+    background: #faf6f1;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #e2e8f0;
     text-align: center;
     overflow: hidden;
 }
@@ -452,10 +460,187 @@ footer {
 .beneficios .card h3 {
     font-size: 1.25rem;
     margin: 1.5rem 1.5rem 1rem;
-    color: #111827;
+    color: #2d3748;
 }
 
 .beneficios .card p {
-    color: #6b7280;
+    color: #4a5568;
     padding: 0 1.5rem 1.5rem;
+}
+
+.como-funciona {
+    padding: 80px 0;
+    background: #f8e9d9;
+}
+
+.como-funciona h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #2d3748;
+}
+
+.como-funciona .passos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.como-funciona .passo:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.passo {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.passo .numero {
+    width: 40px;
+    height: 40px;
+    background: #e53e3e;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.passo h3 {
+    font-size: 1.25rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.passo p {
+    color: #4a5568;
+}
+
+.dicas {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.dicas h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #2d3748;
+}
+
+.dicas .dicas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.dicas .dica:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.dica {
+    padding: 2rem;
+    background: #faf6f1;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.dica h3 {
+    font-size: 1.25rem;
+    color: #2d3748;
+    margin-bottom: 1rem;
+}
+
+.dica p {
+    color: #4a5568;
+}
+
+.depoimentos {
+    padding: 80px 0;
+    background: #f8e9d9;
+}
+
+.depoimentos h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #2d3748;
+}
+
+.depoimentos .depoimentos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.depoimentos .depoimento:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.depoimento {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.depoimento::before {
+    content: '"';
+    font-size: 4rem;
+    color: #e53e3e;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    line-height: 1;
+}
+
+.depoimento p {
+    color: #2d3748;
+    font-style: italic;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.depoimento cite {
+    color: #4a5568;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .beneficios .cards,
+    .como-funciona .passos,
+    .dicas .dicas-grid,
+    .depoimentos .depoimentos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .beneficios .card:last-child,
+    .como-funciona .passo:last-child,
+    .dicas .dica:last-child,
+    .depoimentos .depoimento:last-child {
+        max-width: 100%;
+    }
 } 
