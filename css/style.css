@@ -144,6 +144,13 @@ footer {
 }
 
 /* Responsividade */
+@media (max-width: 1300px) {
+    .container {
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+}
+
 @media (max-width: 768px) {
     header .container {
         justify-content: flex-start;
