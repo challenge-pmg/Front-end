@@ -70,8 +70,6 @@
 
     .team-member:last-child {
         grid-column: 1 / -1;
-        max-width: 50%;
-        margin: 0 auto;
     }
 }
 
@@ -82,16 +80,11 @@
 
     .team-member:last-child {
         grid-column: 1 / -1;
-        max-width: 100%;
     }
 }
 
 @media (max-width: 480px) {
     .team-grid {
         grid-template-columns: 1fr;
-    }
-
-    .team-member:last-child {
-        max-width: 100%;
     }
 } 
