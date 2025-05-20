@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="css/contato.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     <header>
         <div class="container">
-            <button class="hamburger">☰</button>
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
             <div class="logo">TeleSaúde HC</div>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="integrantes.html">Integrantes</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                <ul id="main-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="integrantes.html" role="menuitem">Integrantes</a></li>
+                    <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="contato.html" role="menuitem" aria-current="page">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,58 +35,60 @@
             </div>
         </section>
 
-        <section class="contato">
-            <div class="container">
-                <div class="contato-intro">
-                    <p>Estamos aqui para ajudar! Entre em contato conosco através dos canais abaixo ou preencha o formulário. Nossa equipe está pronta para responder suas dúvidas e receber suas sugestões para melhorar ainda mais o serviço de telemedicina do Hospital das Clínicas.</p>
-                </div>
-                <div class="contato-grid">
-                    <div class="contato-info">
-                        <h2>Informações de Contato</h2>
-                        <div class="info-item">
-                            <h3>Central de Atendimento</h3>
-                            <p>0800 123 4567</p>
-                            <p>Segunda a Sexta, das 7h às 19h</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>E-mail</h3>
-                            <p>telesaude@hc.fm.usp.br</p>
-                        </div>
-                        <div class="info-item">
-                            <h3>Endereço</h3>
-                            <p>Av. Dr. Enéas de Carvalho Aguiar, 255</p>
-                            <p>Cerqueira César - São Paulo/SP</p>
-                        </div>
+        <div id="main-content">
+            <section class="contato">
+                <div class="container">
+                    <div class="contato-intro">
+                        <p>Estamos aqui para ajudar! Entre em contato conosco através dos canais abaixo ou preencha o formulário. Nossa equipe está pronta para responder suas dúvidas e receber suas sugestões para melhorar ainda mais o serviço de telemedicina do Hospital das Clínicas.</p>
                     </div>
-                    <form class="contato-form">
-                        <h2>Envie sua Mensagem</h2>
-                        <div class="form-group">
-                            <label for="nome">Nome</label>
-                            <input type="text" id="nome" name="nome" class="input-text" required>
+                    <div class="contato-grid">
+                        <div class="contato-info">
+                            <h2>Informações de Contato</h2>
+                            <div class="info-item">
+                                <h3>Central de Atendimento</h3>
+                                <p>0800 123 4567</p>
+                                <p>Segunda a Sexta, das 7h às 19h</p>
+                            </div>
+                            <div class="info-item">
+                                <h3>E-mail</h3>
+                                <p>telesaude@hc.fm.usp.br</p>
+                            </div>
+                            <div class="info-item">
+                                <h3>Endereço</h3>
+                                <p>Av. Dr. Enéas de Carvalho Aguiar, 255</p>
+                                <p>Cerqueira César - São Paulo/SP</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" class="input-email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="assunto">Assunto</label>
-                            <select id="assunto" name="assunto" class="input-select" required>
-                                <option value="">Selecione um assunto</option>
-                                <option value="agendamento">Agendamento</option>
-                                <option value="duvida">Dúvida</option>
-                                <option value="sugestao">Sugestão</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensagem">Mensagem</label>
-                            <textarea id="mensagem" name="mensagem" class="input-textarea" rows="5" required></textarea>
-                        </div>
-                        <button type="submit">Enviar Mensagem</button>
-                    </form>
+                        <form class="contato-form" role="form" aria-label="Formulário de contato">
+                            <h2>Envie sua Mensagem</h2>
+                            <div class="form-group">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" class="input-text" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" class="input-email" required aria-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="assunto">Assunto</label>
+                                <select id="assunto" name="assunto" class="input-select" required aria-required="true">
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="agendamento">Agendamento</option>
+                                    <option value="duvida">Dúvida</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="mensagem">Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" class="input-textarea" rows="5" required aria-required="true"></textarea>
+                            </div>
+                            <button type="submit" aria-label="Enviar mensagem">Enviar Mensagem</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer>

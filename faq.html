@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="css/faq.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     <header>
         <div class="container">
-            <button class="hamburger">☰</button>
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
             <div class="logo">TeleSaúde HC</div>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="integrantes.html">Integrantes</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contato.html">Contato</a></li>
+                <ul id="main-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="integrantes.html" role="menuitem">Integrantes</a></li>
+                    <li role="none"><a href="faq.html" role="menuitem" aria-current="page">FAQ</a></li>
+                    <li role="none"><a href="contato.html" role="menuitem">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,39 +35,41 @@
             </div>
         </section>
 
-        <section class="faq">
-            <div class="container">
-                <div class="faq-intro">
-                    <p>Encontre respostas para as dúvidas mais frequentes sobre o TeleSaúde HC. Nossa equipe está comprometida em fornecer informações claras e precisas para ajudar você a aproveitar ao máximo nosso serviço de telemedicina.</p>
+        <div id="main-content">
+            <section class="faq">
+                <div class="container">
+                    <div class="faq-intro">
+                        <p>Encontre respostas para as dúvidas mais frequentes sobre o TeleSaúde HC. Nossa equipe está comprometida em fornecer informações claras e precisas para ajudar você a aproveitar ao máximo nosso serviço de telemedicina.</p>
+                    </div>
+                    <div class="faq-grid">
+                        <div class="pergunta">
+                            <h2>Como funciona a teleconsulta?</h2>
+                            <p>A teleconsulta é realizada através de uma plataforma segura de videoconferência. O paciente recebe um link por e-mail e, no horário agendado, acessa a consulta pelo computador ou celular.</p>
+                        </div>
+                        <div class="pergunta">
+                            <h2>Quais especialidades estão disponíveis?</h2>
+                            <p>Oferecemos consultas em diversas especialidades médicas, incluindo clínica geral, pediatria, ginecologia, cardiologia, dermatologia e muitas outras, com os melhores profissionais do Hospital das Clínicas.</p>
+                        </div>
+                        <div class="pergunta">
+                            <h2>Como agendar uma consulta?</h2>
+                            <p>O agendamento pode ser feito através do nosso site, aplicativo ou pelo SUS Digital. Basta escolher a especialidade, o médico e o horário disponível.</p>
+                        </div>
+                        <div class="pergunta">
+                            <h2>Quem pode usar o serviço?</h2>
+                            <p>O serviço está disponível para todos os pacientes do SUS que tenham indicação médica para teleconsulta. É necessário ter um cadastro ativo no sistema do Hospital das Clínicas.</p>
+                        </div>
+                        <div class="pergunta">
+                            <h2>Posso receber receitas e atestados?</h2>
+                            <p>Sim, após a consulta, o médico pode emitir receitas e atestados digitalmente, que são enviados por e-mail e têm a mesma validade dos documentos físicos. As receitas são aceitas em todas as farmácias do SUS.</p>
+                        </div>
+                        <div class="pergunta">
+                            <h2>Quais são os requisitos técnicos?</h2>
+                            <p>Você precisa de um dispositivo com câmera e microfone, conexão estável com a internet e um navegador atualizado. Recomendamos testar o equipamento antes da consulta. Caso não tenha acesso à internet, entre em contato com nossa central de atendimento.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="faq-grid">
-                    <div class="pergunta">
-                        <h2>Como funciona a teleconsulta?</h2>
-                        <p>A teleconsulta é realizada através de uma plataforma segura de videoconferência. O paciente recebe um link por e-mail e, no horário agendado, acessa a consulta pelo computador ou celular.</p>
-                    </div>
-                    <div class="pergunta">
-                        <h2>Quais especialidades estão disponíveis?</h2>
-                        <p>Oferecemos consultas em diversas especialidades médicas, incluindo clínica geral, pediatria, ginecologia, cardiologia, dermatologia e muitas outras, com os melhores profissionais do Hospital das Clínicas.</p>
-                    </div>
-                    <div class="pergunta">
-                        <h2>Como agendar uma consulta?</h2>
-                        <p>O agendamento pode ser feito através do nosso site, aplicativo ou pelo SUS Digital. Basta escolher a especialidade, o médico e o horário disponível.</p>
-                    </div>
-                    <div class="pergunta">
-                        <h2>Quem pode usar o serviço?</h2>
-                        <p>O serviço está disponível para todos os pacientes do SUS que tenham indicação médica para teleconsulta. É necessário ter um cadastro ativo no sistema do Hospital das Clínicas.</p>
-                    </div>
-                    <div class="pergunta">
-                        <h2>Posso receber receitas e atestados?</h2>
-                        <p>Sim, após a consulta, o médico pode emitir receitas e atestados digitalmente, que são enviados por e-mail e têm a mesma validade dos documentos físicos. As receitas são aceitas em todas as farmácias do SUS.</p>
-                    </div>
-                    <div class="pergunta">
-                        <h2>Quais são os requisitos técnicos?</h2>
-                        <p>Você precisa de um dispositivo com câmera e microfone, conexão estável com a internet e um navegador atualizado. Recomendamos testar o equipamento antes da consulta. Caso não tenha acesso à internet, entre em contato com nossa central de atendimento.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer>

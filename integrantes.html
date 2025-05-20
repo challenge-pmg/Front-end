@@ -8,16 +8,17 @@
     <link rel="stylesheet" href="css/integrantes.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
     <header>
         <div class="container">
             <a href="index.html" class="logo">TeleSaúde HC</a>
-            <button class="hamburger">☰</button>
+            <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
             <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contato.html">Contato</a></li>
-                    <li><a href="integrantes.html">Integrantes</a></li>
+                <ul id="main-menu" role="menu">
+                    <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                    <li role="none"><a href="faq.html" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="contato.html" role="menuitem">Contato</a></li>
+                    <li role="none"><a href="integrantes.html" role="menuitem" aria-current="page">Integrantes</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,42 +35,44 @@
             </div>
         </section>
 
-        <section class="team">
-            <div class="container">
-                <div class="team-intro">
-                    <p>O projeto TeleSaúde HC é desenvolvido por uma equipe de estudantes da FIAP, unidos pelo objetivo comum de contribuir para a melhoria do acesso à saúde pública. Cada membro traz sua visão única e dedicação para criar uma solução que faça a diferença na vida das pessoas.</p>
+        <div id="main-content">
+            <section class="team">
+                <div class="container">
+                    <div class="team-intro">
+                        <p>O projeto TeleSaúde HC é desenvolvido por uma equipe de estudantes da FIAP, unidos pelo objetivo comum de contribuir para a melhoria do acesso à saúde pública. Cada membro traz sua visão única e dedicação para criar uma solução que faça a diferença na vida das pessoas.</p>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="avatar">MB</div>
+                            <h3>Murilo Bastos</h3>
+                            <p>Desenvolvedor Front-end</p>
+                            <div class="social-links">
+                                <a href="https://github.com/murilobast" target="_blank">GitHub</a>
+                                <a href="https://linkedin.com/in/murilobast" target="_blank">LinkedIn</a>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar">LF</div>
+                            <h3>Lucas Ferreira</h3>
+                            <p>Designer UI/UX</p>
+                            <div class="social-links">
+                                <a href="https://github.com/lucasferreira" target="_blank">GitHub</a>
+                                <a href="https://linkedin.com/in/lucasferreira" target="_blank">LinkedIn</a>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <div class="avatar">RS</div>
+                            <h3>Rafael Silva</h3>
+                            <p>Desenvolvedor Back-end</p>
+                            <div class="social-links">
+                                <a href="https://github.com/rafaelsilva" target="_blank">GitHub</a>
+                                <a href="https://linkedin.com/in/rafaelsilva" target="_blank">LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="avatar">MB</div>
-                        <h3>Murilo Bastos</h3>
-                        <p>Desenvolvedor Front-end</p>
-                        <div class="social-links">
-                            <a href="https://github.com/murilobast" target="_blank">GitHub</a>
-                            <a href="https://linkedin.com/in/murilobast" target="_blank">LinkedIn</a>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="avatar">LF</div>
-                        <h3>Lucas Ferreira</h3>
-                        <p>Designer UI/UX</p>
-                        <div class="social-links">
-                            <a href="https://github.com/lucasferreira" target="_blank">GitHub</a>
-                            <a href="https://linkedin.com/in/lucasferreira" target="_blank">LinkedIn</a>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="avatar">RS</div>
-                        <h3>Rafael Silva</h3>
-                        <p>Desenvolvedor Back-end</p>
-                        <div class="social-links">
-                            <a href="https://github.com/rafaelsilva" target="_blank">GitHub</a>
-                            <a href="https://linkedin.com/in/rafaelsilva" target="_blank">LinkedIn</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
 
     <footer>

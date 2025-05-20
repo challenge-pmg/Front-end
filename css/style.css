@@ -143,6 +143,22 @@ footer {
     text-align: center;
 }
 
+/* Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #e53e3e;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* Responsividade */
 @media (max-width: 1300px) {
     .container {
