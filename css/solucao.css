@@ -21,6 +21,10 @@
     margin-bottom: 4rem;
 }
 
+.solucao-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
 .solucao-item {
     background: var(--bg-light);
     padding: 2rem;
