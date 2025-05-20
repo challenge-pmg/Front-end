@@ -127,4 +127,24 @@
     .contato-intro p {
         font-size: 1rem;
     }
+}
+
+.error-message {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.input-text.error,
+.input-email.error,
+.input-select.error,
+.input-textarea.error {
+    border-color: #e53e3e;
+}
+
+.input-text.error:focus,
+.input-email.error:focus,
+.input-select.error:focus,
+.input-textarea.error:focus {
+    box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2);
 } 
