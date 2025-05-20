@@ -1,60 +1,97 @@
 /* Equipe */
 .team {
-    padding: 80px 0 120px 0;
-    background: #f9fafb;
+    padding: 80px 0;
+    background: #fff;
 }
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .team-member {
-    padding: 2.5rem;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
     text-align: center;
+    padding: 2rem;
+    background: #faf6f1;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
 }
 
-.team-member .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #0066cc;
+.avatar {
+    width: 100px;
+    height: 100px;
+    background: #e53e3e;
     color: #fff;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
     font-weight: bold;
-    margin: 0 auto 1rem;
+    margin: 0 auto 1.5rem;
 }
 
 .team-member h3 {
     font-size: 1.25rem;
+    color: #2d3748;
     margin-bottom: 0.5rem;
-    color: #111827;
 }
 
 .team-member p {
-    color: #6b7280;
-    margin-bottom: 1rem;
+    color: #4a5568;
+    margin-bottom: 1.5rem;
 }
 
-.team-member .social-links {
+.social-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
 
-.team-member .social-links a {
-    color: #0066cc;
+.social-links a {
+    color: #4a5568;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-.team-member .social-links a:hover {
-    text-decoration: underline;
+.social-links a:hover {
+    color: #e53e3e;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-member:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-member:last-child {
+        grid-column: 1 / -1;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member:last-child {
+        max-width: 100%;
+    }
 } 
