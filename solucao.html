@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="css/solucao.css">
 </head>
 <body>
+    <!-- Link para acessibilidade - permite pular para o conteúdo principal -->
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Header com navegação principal -->
     <header>
         <div class="container">
+            <!-- Botão do menu mobile -->
             <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
             <div class="logo">TeleSaúde HC</div>
+            <!-- Menu de navegação principal -->
             <nav>
                 <ul id="main-menu" role="menu">
                     <li role="none"><a href="index.html" role="menuitem">Home</a></li>
@@ -26,104 +31,125 @@
     </header>
 
     <main>
+        <!-- Seção Hero - Banner principal -->
         <section class="hero">
-            <div class="hero-bg" role="img" aria-label="Sistema automatizado de telemedicina"></div>
+            <div class="hero-bg" role="img" aria-label="Sistema de telemedicina em funcionamento"></div>
             <div class="container">
                 <div class="hero-content">
                     <h1>Nossa Solução</h1>
-                    <p>Automação inteligente para agilizar o atendimento</p>
+                    <p>Conheça a tecnologia por trás do TeleSaúde HC</p>
                 </div>
             </div>
         </section>
 
+        <!-- Conteúdo principal da página -->
         <div id="main-content">
+            <!-- Seção de Introdução -->
+            <section class="intro">
+                <div class="container">
+                    <p>O TeleSaúde HC é uma solução completa que integra inteligência artificial, automação e atendimento humanizado para revolucionar o acesso à saúde pública. Nossa plataforma foi desenvolvida para atender às necessidades específicas do Hospital das Clínicas, garantindo eficiência e qualidade no atendimento.</p>
+                </div>
+            </section>
+
+            <!-- Seção de Componentes da Solução -->
             <section class="solucao">
                 <div class="container">
-                    <div class="solucao-intro">
-                        <p>Desenvolvemos uma solução inovadora que combina automação e inteligência artificial para simplificar o processo de agendamento e realização de teleconsultas no Hospital das Clínicas.</p>
-                    </div>
-
+                    <h2>Componentes da Solução</h2>
                     <div class="solucao-grid">
+                        <!-- Card 1: Bot de WhatsApp -->
                         <div class="solucao-item">
-                            <h2>Bot de WhatsApp</h2>
-                            <p>Nosso bot de WhatsApp atua como assistente virtual, coletando os dados necessários do paciente de forma amigável e intuitiva. O paciente só precisa enviar uma mensagem para começar o processo.</p>
+                            <h3>Bot de WhatsApp</h3>
+                            <p>Atendimento inicial automatizado via WhatsApp, permitindo que os pacientes iniciem o processo de agendamento a qualquer momento, 24 horas por dia.</p>
                             <ul>
-                                <li>Coleta de dados pessoais</li>
+                                <li>Respostas instantâneas</li>
+                                <li>Coleta de informações básicas</li>
                                 <li>Verificação de elegibilidade</li>
-                                <li>Escolha de especialidade</li>
-                                <li>Confirmação de horários</li>
+                                <li>Agendamento automático</li>
                             </ul>
                         </div>
 
+                        <!-- Card 2: Bot de Conversa -->
                         <div class="solucao-item">
-                            <h2>Bot de Conversa</h2>
-                            <p>Além do WhatsApp, oferecemos um bot de conversa integrado ao site, que pode responder dúvidas frequentes, auxiliar no agendamento e fornecer informações sobre o serviço 24 horas por dia.</p>
+                            <h3>Bot de Conversa</h3>
+                            <p>Assistente virtual integrado ao site, oferecendo suporte imediato e personalizado para os pacientes que preferem iniciar o contato pela web.</p>
                             <ul>
-                                <li>Atendimento instantâneo</li>
+                                <li>Suporte instantâneo</li>
                                 <li>Respostas personalizadas</li>
-                                <li>Suporte em múltiplos idiomas</li>
-                                <li>Integração com o sistema de agendamento</li>
+                                <li>Suporte multilíngue</li>
+                                <li>Integração com agendamento</li>
                             </ul>
                         </div>
 
+                        <!-- Card 3: Sistema de Agendamento -->
                         <div class="solucao-item">
-                            <h2>Automação com Puppeteer</h2>
-                            <p>Utilizamos o Puppeteer para automatizar todo o processo complexo do sistema do HC, desde o login até o agendamento da consulta. O bot preenche todos os formulários necessários de forma precisa e segura.</p>
+                            <h3>Sistema de Agendamento</h3>
+                            <p>Plataforma inteligente que gerencia a agenda dos médicos, otimizando o tempo e garantindo o melhor aproveitamento dos recursos disponíveis.</p>
                             <ul>
-                                <li>Autenticação automática</li>
-                                <li>Preenchimento de formulários</li>
-                                <li>Navegação entre páginas</li>
-                                <li>Tratamento de erros</li>
+                                <li>Agenda integrada</li>
+                                <li>Confirmação automática</li>
+                                <li>Lembretes por WhatsApp</li>
+                                <li>Reagendamento fácil</li>
                             </ul>
                         </div>
 
+                        <!-- Card 4: Plataforma de Teleconsulta -->
                         <div class="solucao-item">
-                            <h2>Link da Videochamada</h2>
-                            <p>Após o agendamento bem-sucedido, o sistema gera automaticamente o link da videochamada e o envia para o paciente via WhatsApp, junto com instruções claras sobre como acessar a consulta.</p>
+                            <h3>Plataforma de Teleconsulta</h3>
+                            <p>Ambiente seguro e intuitivo para realização das consultas online, com recursos que facilitam a interação entre médico e paciente.</p>
                             <ul>
-                                <li>Geração do link seguro</li>
-                                <li>Envio automático</li>
-                                <li>Instruções de acesso</li>
-                                <li>Lembretes programados</li>
+                                <li>Videoconferência HD</li>
+                                <li>Compartilhamento de arquivos</li>
+                                <li>Prontuário digital</li>
+                                <li>Receitas eletrônicas</li>
                             </ul>
                         </div>
 
+                        <!-- Card 5: Benefícios -->
                         <div class="solucao-item">
-                            <h2>Benefícios</h2>
-                            <p>Nossa solução traz diversos benefícios tanto para os pacientes quanto para o hospital:</p>
+                            <h3>Benefícios</h3>
+                            <p>Nossa solução traz diversos benefícios tanto para os pacientes quanto para o Hospital das Clínicas, transformando a experiência de atendimento.</p>
                             <ul>
-                                <li>Redução do tempo de espera</li>
-                                <li>Eliminação de erros humanos</li>
-                                <li>Atendimento 24/7</li>
-                                <li>Maior satisfação do paciente</li>
-                                <li>Otimização dos recursos do hospital</li>
+                                <li>Redução de filas</li>
+                                <li>Economia de tempo</li>
+                                <li>Maior acesso à saúde</li>
+                                <li>Otimização de recursos</li>
                             </ul>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="fluxo">
-                        <h2>Como Funciona</h2>
-                        <div class="fluxo-steps">
-                            <div class="step">
-                                <span class="step-number">1</span>
-                                <h3>Primeiro Contato</h3>
-                                <p>Paciente inicia conversa via WhatsApp ou bot do site</p>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">2</span>
-                                <h3>Coleta de Dados</h3>
-                                <p>Bot coleta informações e verifica elegibilidade</p>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">3</span>
-                                <h3>Automação</h3>
-                                <p>Puppeteer automatiza o processo no sistema do HC</p>
-                            </div>
-                            <div class="step">
-                                <span class="step-number">4</span>
-                                <h3>Confirmação</h3>
-                                <p>Link da videochamada é enviado ao paciente</p>
-                            </div>
+            <!-- Seção de Fluxo -->
+            <section class="fluxo">
+                <div class="container">
+                    <h2>Como Funciona</h2>
+                    <div class="fluxo-steps">
+                        <!-- Passo 1: Primeiro Contato -->
+                        <div class="fluxo-step">
+                            <div class="step-number">1</div>
+                            <h3>Primeiro Contato</h3>
+                            <p>O paciente inicia o atendimento através do WhatsApp ou bot de conversa do site</p>
+                        </div>
+
+                        <!-- Passo 2: Coleta de Dados -->
+                        <div class="fluxo-step">
+                            <div class="step-number">2</div>
+                            <h3>Coleta de Dados</h3>
+                            <p>O bot coleta informações básicas e verifica a elegibilidade do paciente</p>
+                        </div>
+
+                        <!-- Passo 3: Agendamento -->
+                        <div class="fluxo-step">
+                            <div class="step-number">3</div>
+                            <h3>Agendamento</h3>
+                            <p>Sistema agenda a consulta e envia confirmação por WhatsApp</p>
+                        </div>
+
+                        <!-- Passo 4: Consulta -->
+                        <div class="fluxo-step">
+                            <div class="step-number">4</div>
+                            <h3>Consulta</h3>
+                            <p>Paciente e médico se conectam na plataforma de teleconsulta</p>
                         </div>
                     </div>
                 </div>
@@ -131,12 +157,14 @@
         </div>
     </main>
 
+    <!-- Footer com copyright -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 TeleSaúde HC - Hospital das Clínicas</p>
+            <p>&copy; 2025 TeleSaúde HC. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html> 

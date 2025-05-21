@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="css/faq.css">
 </head>
 <body>
+    <!-- Link para acessibilidade - permite pular para o conteúdo principal -->
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+
+    <!-- Header com navegação principal -->
     <header>
         <div class="container">
+            <!-- Botão do menu mobile -->
             <button class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
             <div class="logo">TeleSaúde HC</div>
+            <!-- Menu de navegação principal -->
             <nav>
                 <ul id="main-menu" role="menu">
                     <li role="none"><a href="index.html" role="menuitem">Home</a></li>
@@ -26,46 +31,88 @@
     </header>
 
     <main>
+        <!-- Seção Hero - Banner principal -->
         <section class="hero">
-            <div class="hero-bg" role="img" aria-label="Paciente recebendo atendimento médico remoto"></div>
+            <div class="hero-bg" role="img" aria-label="Paciente com dúvidas sobre teleconsulta"></div>
             <div class="container">
                 <div class="hero-content">
                     <h1>Perguntas Frequentes</h1>
-                    <p>Tire suas dúvidas sobre o TeleSaúde HC</p>
+                    <p>Tire suas dúvidas sobre o serviço de teleconsulta</p>
                 </div>
             </div>
         </section>
 
+        <!-- Conteúdo principal da página -->
         <div id="main-content">
+            <!-- Seção de FAQ -->
             <section class="faq">
                 <div class="container">
-                    <div class="faq-intro">
-                        <p>Encontre respostas para as dúvidas mais frequentes sobre o TeleSaúde HC. Nossa equipe está comprometida em fornecer informações claras e precisas para ajudar você a aproveitar ao máximo nosso serviço de telemedicina.</p>
-                    </div>
-                    <div class="faq-grid">
-                        <div class="pergunta">
-                            <h2>Como funciona a teleconsulta?</h2>
-                            <p>A teleconsulta é realizada através de uma plataforma segura de videoconferência. O paciente recebe um link por e-mail e, no horário agendado, acessa a consulta pelo computador ou celular.</p>
+                    <!-- Lista de perguntas e respostas -->
+                    <div class="faq-list">
+                        <!-- Item 1: O que é teleconsulta? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                O que é teleconsulta?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>A teleconsulta é uma consulta médica realizada de forma remota, através de videoconferência. O paciente e o médico se conectam pela internet, permitindo que a consulta seja realizada sem a necessidade de deslocamento.</p>
+                            </div>
                         </div>
-                        <div class="pergunta">
-                            <h2>Quais especialidades estão disponíveis?</h2>
-                            <p>Oferecemos consultas em diversas especialidades médicas, incluindo clínica geral, pediatria, ginecologia, cardiologia, dermatologia e muitas outras, com os melhores profissionais do Hospital das Clínicas.</p>
+
+                        <!-- Item 2: Como agendar uma teleconsulta? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como agendar uma teleconsulta?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Você pode agendar sua teleconsulta através do SUS Digital ou pela Central de Atendimento do Hospital das Clínicas. O agendamento é simples e rápido, e você receberá todas as instruções por e-mail.</p>
+                            </div>
                         </div>
-                        <div class="pergunta">
-                            <h2>Como agendar uma consulta?</h2>
-                            <p>O agendamento pode ser feito através do nosso site, aplicativo ou pelo SUS Digital. Basta escolher a especialidade, o médico e o horário disponível.</p>
+
+                        <!-- Item 3: Quais equipamentos preciso? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quais equipamentos preciso para fazer uma teleconsulta?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Você precisará de um computador, tablet ou smartphone com câmera e microfone, além de uma conexão estável com a internet. Recomendamos também um ambiente silencioso e bem iluminado para melhor qualidade da consulta.</p>
+                            </div>
                         </div>
-                        <div class="pergunta">
-                            <h2>Quem pode usar o serviço?</h2>
-                            <p>O serviço está disponível para todos os pacientes do SUS que tenham indicação médica para teleconsulta. É necessário ter um cadastro ativo no sistema do Hospital das Clínicas.</p>
+
+                        <!-- Item 4: A teleconsulta é segura? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                A teleconsulta é segura?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim, a teleconsulta é totalmente segura. Utilizamos uma plataforma de videoconferência criptografada, que protege a privacidade e a confidencialidade das informações trocadas durante a consulta.</p>
+                            </div>
                         </div>
-                        <div class="pergunta">
-                            <h2>Posso receber receitas e atestados?</h2>
-                            <p>Sim, após a consulta, o médico pode emitir receitas e atestados digitalmente, que são enviados por e-mail e têm a mesma validade dos documentos físicos. As receitas são aceitas em todas as farmácias do SUS.</p>
+
+                        <!-- Item 5: Posso receber receitas médicas? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Posso receber receitas médicas na teleconsulta?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim, você receberá suas receitas médicas digitalmente, com a mesma validade das receitas tradicionais. O documento será enviado por e-mail logo após a consulta.</p>
+                            </div>
                         </div>
-                        <div class="pergunta">
-                            <h2>Quais são os requisitos técnicos?</h2>
-                            <p>Você precisa de um dispositivo com câmera e microfone, conexão estável com a internet e um navegador atualizado. Recomendamos testar o equipamento antes da consulta. Caso não tenha acesso à internet, entre em contato com nossa central de atendimento.</p>
+
+                        <!-- Item 6: E se precisar de exames? -->
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                E se o médico solicitar exames?
+                                <span class="icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Se houver necessidade de exames, o médico irá solicitar e você receberá os encaminhamentos digitalmente. Os exames podem ser realizados em qualquer unidade do SUS mais próxima de você.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -73,12 +120,14 @@
         </div>
     </main>
 
+    <!-- Footer com copyright -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 TeleSaúde HC - Hospital das Clínicas</p>
+            <p>&copy; 2025 TeleSaúde HC. Todos os direitos reservados.</p>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html> 
