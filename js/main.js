@@ -2,7 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Menu Mobile
     const header = document.querySelector('header');
     const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav ul');
+    const nav = document.querySelector('nav');
+    const body = document.body;
+    
+    // Criar overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    body.appendChild(overlay);
 
     // Efeito de scroll no header
     window.addEventListener('scroll', () => {
@@ -13,18 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Função para abrir o menu
+    function openMenu() {
+        nav.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('menu-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+    }
+
+    // Função para fechar o menu
+    function closeMenu() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('menu-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+    }
+
     // Toggle do menu mobile
     hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', nav.classList.contains('active'));
+        if (nav.classList.contains('active')) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
     });
+
+    // Fechar menu ao clicar no overlay
+    overlay.addEventListener('click', closeMenu);
 
     // Fechar menu ao clicar em um link
     document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-        });
+        link.addEventListener('click', closeMenu);
     });
 
     // Validação do Formulário de Contato
