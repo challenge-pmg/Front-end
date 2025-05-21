@@ -11,7 +11,7 @@
 .solucao-intro p {
     font-size: 1.2rem;
     line-height: 1.6;
-    color: var(--text-color);
+    color: #2d3748;
 }
 
 .solucao-grid {
@@ -26,14 +26,14 @@
 }
 
 .solucao-item {
-    background: var(--bg-light);
+    background: #fff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .solucao-item h2 {
-    color: var(--primary-color);
+    color: #e53e3e;
     margin-bottom: 1rem;
     font-size: 1.5rem;
 }
@@ -56,7 +56,7 @@
 
 .solucao-item ul li::before {
     content: "•";
-    color: var(--primary-color);
+    color: #e53e3e;
     position: absolute;
     left: 0;
 }
@@ -67,7 +67,7 @@
 }
 
 .fluxo h2 {
-    color: var(--primary-color);
+    color: #e53e3e;
     margin-bottom: 3rem;
     font-size: 2rem;
 }
@@ -86,14 +86,14 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--primary-color);
+    background: #e53e3e;
     z-index: 1;
 }
 
 .step {
     position: relative;
     z-index: 2;
-    background: var(--bg-light);
+    background: #fff;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,7 @@
     height: 40px;
     line-height: 40px;
     text-align: center;
-    background: var(--primary-color);
+    background: #e53e3e;
     color: white;
     border-radius: 50%;
     margin-bottom: 1rem;
@@ -113,7 +113,7 @@
 }
 
 .step h3 {
-    color: var(--primary-color);
+    color: #e53e3e;
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
 }
