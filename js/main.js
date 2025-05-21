@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Efeito de scroll no header
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.9)';
+            header.classList.add('shrink');
         } else {
-            header.style.background = '#fff';
+            header.classList.remove('shrink');
         }
     });
 

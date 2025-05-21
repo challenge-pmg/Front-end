@@ -1,4 +1,10 @@
 /* Estilos Globais */
+:root {
+    --primary-color: #e53e3e;
+    --text-color: #2d3748;
+    --bg-light: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -19,26 +25,43 @@ body {
 
 /* Header */
 header {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: fixed;
-    width: 100%;
     top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+header.shrink {
+    padding: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
+    transition: padding 0.3s ease;
 }
 
-.logo {
+header.shrink .container {
+    padding: 0.5rem 2rem;
+}
+
+header .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #e53e3e;
-    text-decoration: none;
+    color: var(--primary-color);
+    transition: font-size 0.3s ease;
+}
+
+header.shrink .logo {
+    font-size: 1.2rem;
 }
 
 .hamburger {
