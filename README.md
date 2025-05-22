@@ -39,6 +39,8 @@ front/
 2. Navegue até o diretório do projeto
 3. Abra o arquivo `index.html` em seu navegador ou use um servidor local.
 
+Alternativamente, acesse a versão online do projeto: [TeleSaúde HC](https://challenge-pmg.github.io/Front-end/)
+
 ## 👥 Participantes
 
 - **Murilo Bastos** — RM561287 — [iam@murilobastos.com](mailto:iam@murilobastos.com) — [GitHub: murilobast](https://github.com/murilobast)
