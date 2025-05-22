@@ -41,17 +41,9 @@ front/
 
 ## 👥 Participantes
 
-- **Murilo** - RM999999
-  - GitHub: [@murilobast](https://github.com/murilobast)
-  - LinkedIn: [Murilo](https://linkedin.com/in/murilobast)
-
-- **Pedro** - RM999999
-  - GitHub: [@pedro](https://github.com/pedro)
-  - LinkedIn: [Pedro](https://linkedin.com/in/pedro)
-
-- **Guilherme** - RM999999
-  - GitHub: [@guilherme](https://github.com/guilherme)
-  - LinkedIn: [Guilherme](https://linkedin.com/in/guilherme)
+- **Murilo Bastos** — RM561287 — [iam@murilobastos.com](mailto:iam@murilobastos.com) — [GitHub: murilobast](https://github.com/murilobast)
+- **Pedro Henrique** — RM562312 — [opedro485@gmail.com](mailto:opedro485@gmail.com) — [GitHub: pedrinzz10](https://github.com/pedrinzz10)
+- **Guilherme Lisboa** — RM565187 — [guilisboadl@gmail.com](mailto:guilisboadl@gmail.com) — [GitHub: guilisboa](https://github.com/guilisboa)
 
 ## 📝 Funcionalidades
 
