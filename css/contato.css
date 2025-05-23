@@ -4,47 +4,45 @@
     background: #fff;
 }
 
-/* Grid de Informações de Contato */
-.contato-info {
-    margin-bottom: 4rem;
-    text-align: center;
-}
-
-.contato-info h2 {
-    font-size: 2rem;
-    color: #1a202c;
-    margin-bottom: 2rem;
-}
-
-.info-grid {
+.contato .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 1000px;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.info-item {
+/* Informações de Contato */
+.contato-info {
     padding: 2rem;
     background: #f9fafb;
     border-radius: 8px;
     border: 1px solid #e5e7eb;
-    transition: transform 0.3s ease;
 }
 
-.info-item:hover {
-    transform: translateY(-5px);
+.contato-info h2 {
+    color: #2d3748;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.info-item {
+    margin-bottom: 2rem;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
 }
 
 .info-item h3 {
-    font-size: 1.25rem;
     color: #2d3748;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
 }
 
 .info-item p {
     color: #4a5568;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .info-item p:last-child {
@@ -52,10 +50,8 @@
     color: #718096;
 }
 
-/* Formulário de Contato */
+/* Formulário */
 .contato-form {
-    max-width: 600px;
-    margin: 0 auto;
     padding: 2rem;
     background: #f9fafb;
     border-radius: 8px;
@@ -63,10 +59,9 @@
 }
 
 .contato-form h2 {
-    font-size: 1.5rem;
-    color: #1a202c;
+    color: #2d3748;
     margin-bottom: 2rem;
-    text-align: center;
+    font-size: 1.5rem;
 }
 
 .form-group {
@@ -131,21 +126,13 @@
 }
 
 /* Responsividade */
-@media (max-width: 992px) {
-    .info-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 768px) {
-    .contato {
-        padding: 40px 0;
-    }
-
-    .info-grid {
+    .contato .container {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
+    .contato-info,
     .contato-form {
         padding: 1.5rem;
     }
