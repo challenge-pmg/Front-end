@@ -70,6 +70,11 @@
     transition: color 0.3s;
 }
 
+.social-links img {
+    width: 32px;
+    height: 32px;
+}
+
 .social-links a:hover {
     color: #e53e3e;
 }
