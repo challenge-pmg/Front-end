@@ -1,44 +1,64 @@
-.solucao {
-    padding: 80px 0;
+/* Solução */
+.intro {
+    padding: 4rem 0;
+    background: #fff;
 }
 
-.solucao-intro {
-    text-align: center;
+.intro p {
     max-width: 800px;
-    margin: 0 auto 4rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #4b5563;
+    text-align: center;
 }
 
-.solucao-intro p {
-    font-size: 1.2rem;
-    line-height: 1.6;
+/* Grid de Solução */
+.solucao {
+    padding: 4rem 0;
+    background: #f9fafb;
+}
+
+.solucao h2 {
+    text-align: center;
     color: #2d3748;
+    margin-bottom: 3rem;
+    font-size: 2rem;
 }
 
 .solucao-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.solucao-item:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 .solucao-item {
     background: #fff;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.solucao-item h2 {
+.solucao-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.solucao-item h3 {
     color: #e53e3e;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .solucao-item p {
+    color: #4a5568;
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
@@ -46,28 +66,32 @@
 .solucao-item ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .solucao-item ul li {
-    margin-bottom: 0.5rem;
+    color: #4a5568;
     padding-left: 1.5rem;
     position: relative;
+    margin-bottom: 0.5rem;
 }
 
-.solucao-item ul li::before {
+.solucao-item ul li:before {
     content: "•";
     color: #e53e3e;
     position: absolute;
     left: 0;
 }
 
+/* Fluxo de Funcionamento */
 .fluxo {
-    text-align: center;
-    margin-top: 4rem;
+    padding: 4rem 0;
+    background: #fff;
 }
 
 .fluxo h2 {
-    color: #e53e3e;
+    text-align: center;
+    color: #2d3748;
     margin-bottom: 3rem;
     font-size: 2rem;
 }
@@ -76,6 +100,8 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -90,47 +116,47 @@
     z-index: 1;
 }
 
-.step {
+.fluxo-step {
+    text-align: center;
     position: relative;
     z-index: 2;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .step-number {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
+    width: 80px;
+    height: 80px;
     background: #e53e3e;
-    color: white;
+    color: #fff;
     border-radius: 50%;
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
     font-weight: bold;
+    margin: 0 auto 1.5rem;
 }
 
-.step h3 {
-    color: #e53e3e;
+.fluxo-step h3 {
+    color: #2d3748;
     margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
-.step p {
-    font-size: 0.9rem;
-    line-height: 1.4;
+.fluxo-step p {
+    color: #4a5568;
+    font-size: 0.875rem;
+    line-height: 1.6;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
+/* Responsividade */
+@media (max-width: 1024px) {
     .solucao-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .fluxo-steps {
         grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
     }
 
     .fluxo-steps::before {
@@ -139,39 +165,43 @@
 }
 
 @media (max-width: 768px) {
-    .solucao {
-        padding: 60px 0;
+    .intro {
+        padding: 2rem 0;
     }
 
-    .solucao-intro {
-        margin-bottom: 3rem;
+    .intro p {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 
-    .solucao-intro p {
-        font-size: 1.1rem;
+    .solucao,
+    .fluxo {
+        padding: 2rem 0;
     }
-}
 
-@media (max-width: 600px) {
+    .solucao h2,
+    .fluxo h2 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .solucao-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .solucao-item {
+        max-width: 100%;
+    }
+
     .fluxo-steps {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 
-    .step {
-        margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .solucao-item {
-        padding: 1.5rem;
-    }
-
-    .solucao-item h2 {
-        font-size: 1.3rem;
-    }
-
-    .step h3 {
-        font-size: 1.1rem;
+    .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
     }
 } 
