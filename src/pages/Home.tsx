@@ -68,16 +68,19 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Wave Divider */}
+        {/* Wave Divider - CORREÇÃO: removido transform problemático */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" className="fill-current text-white">
-            <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+          <svg viewBox="0 0 1440 120" className="w-full h-auto">
+            <path 
+              fill="white" 
+              d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+            ></path>
           </svg>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="bg-white py-16 -mt-1 relative z-10">
+      <section className="bg-white py-16 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {stats.map((stat, index) => (
@@ -111,7 +114,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 border border-gray-100 group"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 group"
               >
                 <div className="text-blue-500 mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
@@ -145,12 +148,12 @@ export default function Home() {
               { step: "4", title: "Acompanhamento", desc: "Receba receitas e exames" }
             ].map((item, index) => (
               <div key={index} className="text-center relative">
-                {/* Connecting Line */}
+                {/* Connecting Line - CORREÇÃO: simplificado */}
                 {index < 3 && (
-                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-blue-200 -z-10"></div>
+                  <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-blue-200"></div>
                 )}
                 
-                <div className="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg">
+                <div className="bg-blue-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg relative z-10">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -210,3 +213,4 @@ export default function Home() {
       </section>
     </div>
   );
+}
