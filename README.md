@@ -1,31 +1,19 @@
-﻿# TeleSaúde HC (React)
+# TeleSaúde HC - Frontend (React + Vite + TypeScript + Tailwind)
 
-Aplicação criada com React + Vite que moderniza o site TeleSaúde HC, mantendo o conteúdo original da landing page em componentes reutilizáveis e com navegação por rotas.
+Projeto convertido a partir de um site HTML/CSS original para cumprir as exigências do **Sprint 03 - Frontend**.
 
-## Principais funcionalidades
-- Layout responsivo com menu fixo, overlay mobile e efeito de shrink ao rolar.
-- Páginas Home, Integrantes, FAQ, Contato e Solução convertidas dos arquivos HTML originais.
-- Formulário de contato com validação em tempo real (sem back-end ligado).
-- Integração com o chat do IBM Watson Assistant, carregado dinamicamente.
+## Como rodar
+1. Instale dependências: `npm install`
+2. Inicie o servidor de desenvolvimento: `npm run dev`
+3. Abra `http://localhost:5173`
 
-## Scripts disponíveis
-- `npm run dev` – inicia o servidor de desenvolvimento (Vite) com hot reload.
-- `npm run build` – gera o bundle otimizado na pasta `dist/`.
-- `npm run preview` – serve localmente o build de produção para validação.
-- `npm run lint` – executa as regras de ESLint configuradas pelo template Vite.
+## O que está incluso
+- React + Vite + TypeScript
+- TailwindCSS (config básica)
+- React Router para navegação (Home, Solução, FAQ, Integrantes, Contato)
+- React Hook Form para validação do formulário de contato
+- Pasta `public/assets/images` contém as imagens copiadas do site original
 
-## Estrutura de pastas (src)
-```
-src/
-├── components/        # Header, Footer e WatsonChat
-├── pages/             # Páginas React equivalentes (Home, Faq, Contato, etc.)
-├── styles/            # CSS reaproveitado do projeto original
-├── App.jsx            # Layout principal + <Outlet />
-├── main.jsx           # Configuração do React Router e bootstrap
-└── index.css          # Reset/Base global complementar
-```
-
-Os assets (imagens e ícones) ficam em `public/assets` para serem servidos diretamente pelo Vite.
-
-## Conteúdo legado
-O material estático usado como base da migração (HTML, CSS e JS puros) foi preservado em `legacy-static/` dentro deste projeto. Caso precise consultar ou comparar com a versão original, o diretório mantém exatamente os arquivos anteriores à migração.
+## Observações
+- O layout foi mantido o mais próximo possível do site original; ajustes visuais finos podem ser feitos convertendo classes para Tailwind conforme necessário.
+- Algumas dependências (Vite plugin React) não foram incluídas no package.json devDependencies por simplicidade — instale conforme sua versão de Vite se necessário.
