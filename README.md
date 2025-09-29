@@ -1,19 +1,35 @@
-# TeleSaúde HC - Frontend (React + Vite + TypeScript + Tailwind)
+# TeleSaúde HC - Frontend
 
-Projeto convertido a partir de um site HTML/CSS original para cumprir as exigências do **Sprint 03 - Frontend**.
+## 📋 Sobre o Projeto
+Sistema de telemedicina desenvolvido para o Hospital das Clínicas, permitindo atendimento médico remoto com agendamento online, prontuário eletrônico e videochamadas.
 
-## Como rodar
-1. Instale dependências: `npm install`
-2. Inicie o servidor de desenvolvimento: `npm run dev`
-3. Abra `http://localhost:5173`
+## 🚀 Tecnologias Utilizadas
+- **React** + **Vite** + **TypeScript**
+- **TailwindCSS** para estilização
+- **React Router** para navegação
+- **React Hook Form** para validações
 
-## O que está incluso
-- React + Vite + TypeScript
-- TailwindCSS (config básica)
-- React Router para navegação (Home, Solução, FAQ, Integrantes, Contato)
-- React Hook Form para validação do formulário de contato
-- Pasta `public/assets/images` contém as imagens copiadas do site original
+## 👥 Integrantes do Grupo
+- Guilherme Lisboa Silva - RM565187 - 1TDSPW
+- Pedro Henrique de Oliveira - RM562312 - 1TDSPW  
+- Rafael Rodrigues Trindade - RM564303 - 1TDSPJ
 
-## Observações
-- O layout foi mantido o mais próximo possível do site original; ajustes visuais finos podem ser feitos convertendo classes para Tailwind conforme necessário.
-- Algumas dependências (Vite plugin React) não foram incluídas no package.json devDependencies por simplicidade — instale conforme sua versão de Vite se necessário.
+## 📁 Estrutura do Projeto
+src/
+├── components/ # Componentes reutilizáveis
+├── pages/ # Páginas da aplicação
+├── styles/ # Estilos globais
+└── utils/ # Funções auxiliares
+
+text
+
+## 🎨 Como Executar
+```bash
+npm install
+npm run dev
+🔗 Links Importantes
+Repositório: https://github.com/challenge-pmg/Front-end.git
+
+Deploy: [em breve]
+
+Vídeo Demo: [em breve]
