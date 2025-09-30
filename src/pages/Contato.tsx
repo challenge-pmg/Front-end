@@ -1,42 +1,79 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+import React from "react";
+import ContactForm from "../components/ContactForm";
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from "react-icons/fa";
 
-type FormValues = {
-  name: string,
-  email: string,
-  message: string
-}
+const Contato = () => {
+  const contactInfo = [
+    {
+      icon: <FaMapMarkerAlt className="text-2xl" />,
+      title: "Endereço",
+      content: "Av. Paulista, 1106 - 7º andar - Cerqueira César São Paulo/SPAv. Dr. Enéas de Carvalho Aguiar, 255"
+    },
+    {
+      icon: <FaPhone className="text-2xl" />,
+      title: "Telefone",
+      content: "(11) 2661-0000"
+    },
+    {
+      icon: <FaEnvelope className="text-2xl" />,
+      title: "Email",
+      content: "ouvidoria.geral@hc.fm.usp.br"
+    },
+    {
+      icon: <FaClock className="text-2xl" />,
+      title: "Horário de Atendimento",
+      content: "Segunda a Sexta: 7h às 19h\nSábados: 7h às 13h"
+    }
+  ];
 
-export default function Contato(){
-  const { register, handleSubmit, formState: { errors, isSubmitSuccessful } } = useForm<FormValues>()
-  const onSubmit = (data: FormValues) => {
-    console.log('Form', data)
-    alert('Mensagem enviada (simulada).')
-  }
   return (
-    <section id="contato" className="container mx-auto px-4 py-12">
-      <h2 className="text-2xl font-bold mb-4">Contato</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg bg-white p-6 rounded shadow space-y-4">
-        <div>
-          <label className="block text-sm font-medium">Nome</label>
-          <input {...register('name', { required: 'Nome obrigatório' })} className="mt-1 w-full border p-2 rounded" />
-          {errors.name && <p className="text-red-600 text-sm">{errors.name.message}</p>}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Fale Conosco
+          </h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Estamos aqui para ajudar. Entre em contato conosco para tirar dúvidas, 
+            agendar consultas ou dar sugestões.
+          </p>
         </div>
-        <div>
-          <label className="block text-sm font-medium">E-mail</label>
-          <input {...register('email', { required: 'E-mail obrigatório', pattern: { value: /\S+@\S+\.\S+/, message: 'E-mail inválido' } })} className="mt-1 w-full border p-2 rounded" />
-          {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Informações de Contato */}
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              Nossos Canais
+            </h2>
+            
+            {contactInfo.map((info, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="flex items-start space-x-4">
+                  <div className="text-blue-500 mt-1">
+                    {info.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      {info.title}
+                    </h3>
+                    <p className="text-gray-600 whitespace-pre-line">
+                      {info.content}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Formulário */}
+          <div>
+            <ContactForm />
+          </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium">Mensagem</label>
-          <textarea {...register('message', { required: 'Mensagem obrigatória' })} className="mt-1 w-full border p-2 rounded" rows={5}></textarea>
-          {errors.message && <p className="text-red-600 text-sm">{errors.message.message}</p>}
-        </div>
-        <div>
-          <button type="submit" className="bg-teal-500 text-white px-4 py-2 rounded">Enviar</button>
-          {isSubmitSuccessful && <span className="ml-3 text-green-600">Enviado!</span>}
-        </div>
-      </form>
-    </section>
-  )
-}
+      </div>
+    </div>
+  );
+};
+
+export default Contato;
