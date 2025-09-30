@@ -18,12 +18,8 @@ const ContactForm: React.FC = () => {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulando envio para API
     console.log("Dados do formulário:", data);
-    
-    // Aqui você integraria com sua API
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
     alert("Mensagem enviada com sucesso!");
     reset();
   };
@@ -35,7 +31,6 @@ const ContactForm: React.FC = () => {
       </h3>
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Campo Nome */}
         <div>
           <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
             <FaUser className="mr-2 text-blue-500" />
@@ -64,7 +59,6 @@ const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Campo Email */}
         <div>
           <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
             <FaEnvelope className="mr-2 text-blue-500" />
@@ -93,7 +87,6 @@ const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Campo Telefone */}
         <div>
           <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
             <FaPhone className="mr-2 text-blue-500" />
@@ -122,7 +115,6 @@ const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Campo Mensagem */}
         <div>
           <label className="flex items-center text-sm font-medium text-gray-700 mb-2">
             <FaComment className="mr-2 text-blue-500" />
@@ -155,7 +147,6 @@ const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Botão de Envio */}
         <button
           type="submit"
           disabled={isSubmitting}

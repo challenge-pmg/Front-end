@@ -1,13 +1,16 @@
 import React from "react";
 import ContactForm from "../components/ContactForm";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from "react-icons/fa";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 const Contato = () => {
+  usePageTitle("Contato");
+
   const contactInfo = [
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: "Endereço",
-      content: "Av. Paulista, 1106 - 7º andar - Cerqueira César São Paulo/SPAv. Dr. Enéas de Carvalho Aguiar, 255"
+      content: "Av. Dr. Enéas de Carvalho Aguiar, 255 - Cerqueira César - São Paulo - Brasil"
     },
     {
       icon: <FaPhone className="text-2xl" />,

@@ -1,7 +1,10 @@
 import React from "react";
 import { FaStethoscope, FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaArrowRight } from "react-icons/fa";
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function Home() {
+  usePageTitle("Home");
+
   const features = [
     {
       icon: <FaVideo className="text-3xl" />,
@@ -68,7 +71,7 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Wave Divider - CORREÇÃO: removido transform problemático */}
+        {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" className="w-full h-auto">
             <path 
@@ -148,7 +151,6 @@ export default function Home() {
               { step: "4", title: "Acompanhamento", desc: "Receba receitas e exames" }
             ].map((item, index) => (
               <div key={index} className="text-center relative">
-                {/* Connecting Line - CORREÇÃO: simplificado */}
                 {index < 3 && (
                   <div className="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-blue-200"></div>
                 )}

@@ -1,17 +1,11 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-
-// Interface para TypeScript
-interface Integrante {
-  nome: string;
-  rm: string;
-  turma: string;
-  github: string;
-  linkedin: string;
-}
+import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function Integrantes() {
-  const integrantes: Integrante[] = [
+  usePageTitle("Integrantes");
+
+  const integrantes = [
     {
       nome: "Guilherme Lisboa Silva",
       rm: "RM565187",
@@ -29,7 +23,7 @@ export default function Integrantes() {
     {
       nome: "Rafael Rodrigues Trindade",
       rm: "RM564303",
-      turma: "1TDSPJ",
+      turma: "1TDS",
       github: "https://github.com/rafaeltrindade",
       linkedin: "https://linkedin.com/in/rafael-trindade",
     },
