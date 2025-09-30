@@ -1,5 +1,5 @@
 import React from "react";
-import ContactForm from "../components/ContactForm";
+import ContactForm from "../components/ContactForm"; // ADICIONE ESTE IMPORT
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
 
@@ -10,17 +10,17 @@ const Contato = () => {
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
       title: "Endereço",
-      content: "Av. Dr. Enéas de Carvalho Aguiar, 255 - Cerqueira César - São Paulo - Brasil"
+      content: "Av. Dr. Enéas Carvalho de Aguiar, 255\nCerqueira César, São Paulo - SP"
     },
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Telefone",
-      content: "(11) 2661-0000"
+      content: "(11) 2661-5000"
     },
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: "Email",
-      content: "ouvidoria.geral@hc.fm.usp.br"
+      content: "contato@telesaudehc.com.br"
     },
     {
       icon: <FaClock className="text-2xl" />,
@@ -69,7 +69,7 @@ const Contato = () => {
             ))}
           </div>
 
-          {/* Formulário */}
+          {/* Formulário com React Hook Form */}
           <div>
             <ContactForm />
           </div>

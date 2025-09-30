@@ -1,9 +1,57 @@
-import React from "react";
-import { FaStethoscope, FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaArrowRight } from "react-icons/fa";
+import React, { useState, useEffect } from "react"; // ADICIONE ESTES IMPORTS
+import { FaStethoscope, FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaArrowRight, FaStar } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function Home() {
-  usePageTitle("Home");
+  usePageTitle("Início");
+
+  // useState PARA CONTROLAR ESTADOS
+  const [activeFeature, setActiveFeature] = useState<number>(0);
+  const [showTestimonial, setShowTestimonial] = useState<boolean>(true);
+  const [specialtyCount, setSpecialtyCount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // useEffect PARA SIDEEFFECTS
+  useEffect(() => {
+    // Simular loading inicial
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // useEffect para animação do contador de especialidades
+  useEffect(() => {
+    if (specialtyCount < 15) {
+      const timer = setTimeout(() => {
+        setSpecialtyCount(prev => prev + 1);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [specialtyCount]);
+
+  // useState PARA DADOS DINÂMICOS
+  const [testimonials] = useState([
+    {
+      id: 1,
+      name: "Maria Silva",
+      text: "Atendimento excelente! A doutora foi muito atenciosa e resolveu meu problema sem eu precisar sair de casa.",
+      rating: 5
+    },
+    {
+      id: 2, 
+      name: "João Santos",
+      text: "Rápido e eficiente. Em 10 minutos já tinha minha receita digital. Recomendo!",
+      rating: 4
+    },
+    {
+      id: 3,
+      name: "Ana Oliveira",
+      text: "Surpreendente! A qualidade do atendimento é a mesma do consultório físico.",
+      rating: 5
+    }
+  ]);
 
   const features = [
     {
@@ -13,7 +61,7 @@ export default function Home() {
     },
     {
       icon: <FaClock className="text-3xl" />,
-      title: "Agendamento 24/7",
+      title: "Agendamento 24/7", 
       description: "Marque sua consulta a qualquer hora do dia ou noite"
     },
     {
@@ -34,16 +82,28 @@ export default function Home() {
     {
       icon: <FaStethoscope className="text-3xl" />,
       title: "Multi-especialidades",
-      description: "Mais de 15 especialidades médicas disponíveis"
+      description: `Mais de ${specialtyCount} especialidades médicas disponíveis`
     }
   ];
 
   const stats = [
     { number: "10K+", label: "Pacientes Atendidos" },
-    { number: "50+", label: "Médicos Especialistas" },
+    { number: "50+", label: "Médicos Especialistas" }, 
     { number: "24/7", label: "Atendimento" },
     { number: "98%", label: "Satisfação" }
   ];
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-blue-600 text-lg">Carregando TeleSaúde HC...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -61,7 +121,11 @@ export default function Home() {
               Consultas online com os melhores especialistas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+              <button 
+                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
+                // useState no click - poderíamos adicionar aqui
+                onClick={() => setShowTestimonial(!showTestimonial)}
+              >
                 Agendar Consulta <FaArrowRight />
               </button>
               <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
@@ -71,7 +135,6 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Wave Divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 120" className="w-full h-auto">
             <path 
@@ -81,6 +144,23 @@ export default function Home() {
           </svg>
         </div>
       </section>
+
+      {/* Testimonial Banner - Controlado por useState */}
+      {showTestimonial && (
+        <div className="bg-green-50 border-l-4 border-green-500 p-4 mx-4 mt-4 rounded-lg">
+          <div className="flex justify-between items-center">
+            <p className="text-green-700">
+              <strong>🌟 Depoimento:</strong> "{testimonials[0].text}" - {testimonials[0].name}
+            </p>
+            <button 
+              onClick={() => setShowTestimonial(false)}
+              className="text-green-600 hover:text-green-800 ml-4"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Stats Section */}
       <section className="bg-white py-16 relative z-10">
@@ -100,7 +180,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section com interatividade useState */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -111,13 +191,28 @@ export default function Home() {
               Combinamos tecnologia de ponta com expertise médica para oferecer 
               a melhor experiência em telemedicina
             </p>
+            
+            {/* Controle de feature ativa com useState */}
+            <div className="flex justify-center space-x-4 mt-8">
+              {[0, 1, 2].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveFeature(index)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    activeFeature === index ? 'bg-blue-600 w-8' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 group"
+                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-gray-100 group ${
+                  index === activeFeature ? 'ring-2 ring-blue-500' : ''
+                }`}
               >
                 <div className="text-blue-500 mb-4 group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
@@ -134,6 +229,31 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Seção de Depoimentos com useState */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            O que Nossos Pacientes Dizem
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {testimonials.map((testimonial) => (
+              <div key={testimonial.id} className="bg-gray-50 rounded-2xl p-6">
+                <div className="flex text-yellow-400 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <FaStar key={i} />
+                  ))}
+                </div>
+                <p className="text-gray-600 italic mb-4">"{testimonial.text}"</p>
+                <p className="text-gray-800 font-semibold">- {testimonial.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Resto do código permanece igual */}
+      {/* How It Works, CTA Section, Specialties Preview */}
+      
       {/* How It Works */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">

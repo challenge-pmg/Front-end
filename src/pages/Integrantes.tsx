@@ -23,7 +23,7 @@ export default function Integrantes() {
     {
       nome: "Rafael Rodrigues Trindade",
       rm: "RM564303",
-      turma: "1TDS",
+      turma: "1TDSPJ",
       github: "https://github.com/rafaeltrindade",
       linkedin: "https://linkedin.com/in/rafael-trindade",
     },
