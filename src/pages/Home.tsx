@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"; // ADICIONE ESTES IMPORTS
-import { FaStethoscope, FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaArrowRight, FaStar } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { FaStethoscope, FaVideo, FaClock, FaShieldAlt, FaUserMd, FaMobileAlt, FaArrowRight } from "react-icons/fa";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function Home() {
@@ -7,7 +7,6 @@ export default function Home() {
 
   // useState PARA CONTROLAR ESTADOS
   const [activeFeature, setActiveFeature] = useState<number>(0);
-  const [showTestimonial, setShowTestimonial] = useState<boolean>(true);
   const [specialtyCount, setSpecialtyCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -30,28 +29,6 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, [specialtyCount]);
-
-  // useState PARA DADOS DINÂMICOS
-  const [testimonials] = useState([
-    {
-      id: 1,
-      name: "Maria Silva",
-      text: "Atendimento excelente! A doutora foi muito atenciosa e resolveu meu problema sem eu precisar sair de casa.",
-      rating: 5
-    },
-    {
-      id: 2, 
-      name: "João Santos",
-      text: "Rápido e eficiente. Em 10 minutos já tinha minha receita digital. Recomendo!",
-      rating: 4
-    },
-    {
-      id: 3,
-      name: "Ana Oliveira",
-      text: "Surpreendente! A qualidade do atendimento é a mesma do consultório físico.",
-      rating: 5
-    }
-  ]);
 
   const features = [
     {
@@ -108,9 +85,9 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 text-white overflow-hidden">
+     <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative container mx-auto px-4 py-24">
+        <div className="relative container mx-auto px-4 py-24 z-10"> {/* ADICIONE z-10 AQUI */}
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
               Cuidando de Você, 
@@ -120,22 +97,21 @@ export default function Home() {
               Telemedicina de excelência do Hospital das Clínicas. 
               Consultas online com os melhores especialistas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-20"> {/* ADICIONE z-20 AQUI */}
               <button 
-                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2"
-                // useState no click - poderíamos adicionar aqui
-                onClick={() => setShowTestimonial(!showTestimonial)}
+                className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg flex items-center justify-center gap-2 relative z-30" // ADICIONE z-30 AQUI
               >
                 Agendar Consulta <FaArrowRight />
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300">
+              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 relative z-30"> {/* ADICIONE z-30 AQUI */}
                 Conhecer Mais
               </button>
             </div>
           </div>
         </div>
         
-        <div className="absolute bottom-0 left-0 right-0">
+        {/* Wave Divider - AUMENTE O z-index */}
+        <div className="absolute bottom-0 left-0 right-0 z-0"> {/* MUDE para z-0 */}
           <svg viewBox="0 0 1440 120" className="w-full h-auto">
             <path 
               fill="white" 
@@ -144,23 +120,6 @@ export default function Home() {
           </svg>
         </div>
       </section>
-
-      {/* Testimonial Banner - Controlado por useState */}
-      {showTestimonial && (
-        <div className="bg-green-50 border-l-4 border-green-500 p-4 mx-4 mt-4 rounded-lg">
-          <div className="flex justify-between items-center">
-            <p className="text-green-700">
-              <strong>🌟 Depoimento:</strong> "{testimonials[0].text}" - {testimonials[0].name}
-            </p>
-            <button 
-              onClick={() => setShowTestimonial(false)}
-              className="text-green-600 hover:text-green-800 ml-4"
-            >
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Stats Section */}
       <section className="bg-white py-16 relative z-10">
@@ -229,31 +188,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Seção de Depoimentos com useState */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
-            O que Nossos Pacientes Dizem
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-gray-50 rounded-2xl p-6">
-                <div className="flex text-yellow-400 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <FaStar key={i} />
-                  ))}
-                </div>
-                <p className="text-gray-600 italic mb-4">"{testimonial.text}"</p>
-                <p className="text-gray-800 font-semibold">- {testimonial.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Resto do código permanece igual */}
-      {/* How It Works, CTA Section, Specialties Preview */}
-      
       {/* How It Works */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
