@@ -12,27 +12,21 @@ export default function Integrantes() {
       turma: "1TDSPW",
       github: "https://github.com/guilisbooa",
       linkedin: "https://linkedin.com/in/guilherme-lisboa",
+      foto: "https://github.com/guilisbooa.png",
     },
     {
-      nome: "Pedro Henrique de Oliveira",
+      nome: "Pedro Henrique de Oliveira", 
       rm: "RM562312",
       turma: "1TDSPW",
       github: "https://github.com/pedrohenrique",
       linkedin: "https://linkedin.com/in/pedro-henrique",
-    },
-    {
-      nome: "Rafael Rodrigues Trindade",
-      rm: "RM564303",
-      turma: "1TDSPJ",
-      github: "https://github.com/rafaeltrindade",
-      linkedin: "https://linkedin.com/in/rafael-trindade",
-    },
+      foto: "https://github.com/pedrinzz10.png",
+    }
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
       <div className="container mx-auto px-4">
-        {/* Header Melhorado */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
             Nossa Equipe
@@ -42,23 +36,34 @@ export default function Integrantes() {
           </p>
         </div>
 
-        {/* Grid de Integrantes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {integrantes.map((integrante, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100"
             >
-              {/* Avatar */}
+              {/* Avatar COM FOTO da pasta public */}
               <div className="flex justify-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-md">
-                  <span className="text-white text-2xl font-bold">
-                    {integrante.nome.split(' ').map(n => n[0]).join('')}
-                  </span>
+                <div className="w-24 h-24 rounded-full flex items-center justify-center shadow-md overflow-hidden border-2 border-white bg-gray-200">
+                  <img 
+                    src={integrante.foto} 
+                    alt={`Foto de ${integrante.nome}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback se a imagem não carregar
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement!.innerHTML = `
+                        <div class="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                          <span class="text-white text-xl font-bold">
+                            ${integrante.nome.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                      `;
+                    }}
+                  />
                 </div>
               </div>
 
-              {/* Informações */}
               <div className="text-center">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {integrante.nome}
@@ -72,7 +77,6 @@ export default function Integrantes() {
                   </p>
                 </div>
 
-                {/* Redes Sociais */}
                 <div className="flex justify-center space-x-4 pt-4 border-t border-gray-100">
                   <a
                     href={integrante.github}
@@ -98,7 +102,6 @@ export default function Integrantes() {
           ))}
         </div>
 
-        {/* Footer da Página */}
         <div className="text-center mt-12">
           <p className="text-gray-500">
             Projeto desenvolvido para o Challenge FIAP 2025 - 2º Semestre
