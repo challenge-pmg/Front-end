@@ -21,10 +21,18 @@ export default function Integrantes() {
       github: "https://github.com/pedrohenrique",
       linkedin: "https://linkedin.com/in/pedro-henrique",
       foto: "https://github.com/pedrinzz10.png",
-    }
+    },
+    {
+      nome: "Rafael Rodrigues Trindade Paes", 
+      rm: "RM564303",
+      turma: "1TDSPJ",
+      github: "https://github.com/rafael04072007",
+      linkedin: "https://www.linkedin.com/in/rafael-rodrigues-7708b0283/",
+      foto: "https://media.licdn.com/dms/image/v2/D4D03AQFLG644vl4Tqg/profile-displayphoto-shrink_400_400/B4DZXOEfuxHkAk-/0/1742919040534?e=1762387200&v=beta&t=Bi5jbJ5QjwShJsls5ZE5EVa-5U2e2lMKBcHwqUOBSqQ",
+    },
   ];
 
-  return (
+   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
@@ -36,15 +44,16 @@ export default function Integrantes() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Grid de Integrantes - AGORA 3 COLUNAS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {integrantes.map((integrante, index) => (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:scale-105 border border-gray-100"
             >
-              {/* Avatar COM FOTO da pasta public */}
+              {/* Avatar com foto externa */}
               <div className="flex justify-center mb-6">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center shadow-md overflow-hidden border-2 border-white bg-gray-200">
+                <div className="w-24 h-24 rounded-full shadow-md overflow-hidden border-2 border-white bg-gray-200">
                   <img 
                     src={integrante.foto} 
                     alt={`Foto de ${integrante.nome}`}
@@ -52,13 +61,16 @@ export default function Integrantes() {
                     onError={(e) => {
                       // Fallback se a imagem não carregar
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement!.innerHTML = `
-                        <div class="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-                          <span class="text-white text-xl font-bold">
-                            ${integrante.nome.split(' ').map(n => n[0]).join('')}
-                          </span>
-                        </div>
-                      `;
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        parent.innerHTML = `
+                          <div class="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                            <span class="text-white text-xl font-bold">
+                              ${integrante.nome.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                        `;
+                      }
                     }}
                   />
                 </div>
