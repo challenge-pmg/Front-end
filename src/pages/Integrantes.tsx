@@ -11,7 +11,7 @@ export default function Integrantes() {
       rm: "RM565187",
       turma: "1TDSPW",
       github: "https://github.com/guilisbooa",
-      linkedin: "https://linkedin.com/in/guilherme-lisboa",
+      linkedin: "https://www.linkedin.com/in/guilhermelisboasilva/",
       foto: "https://github.com/guilisbooa.png",
     },
     {
@@ -19,7 +19,7 @@ export default function Integrantes() {
       rm: "RM562312",
       turma: "1TDSPW",
       github: "https://github.com/pedrohenrique",
-      linkedin: "https://linkedin.com/in/pedro-henrique",
+      linkedin: "https://www.linkedin.com/in/pedro-henrique-oliveira-484336261/",
       foto: "https://github.com/pedrinzz10.png",
     },
     {
