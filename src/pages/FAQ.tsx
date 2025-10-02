@@ -7,27 +7,13 @@ const Faq = () => {
   const { id } = useParams<{ id?: string }>();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // DEBUG: Verificar se useParams está funcionando
-  console.log("useParams id:", id);
-  console.log("Tipo do id:", typeof id);
-
-  // useEffect CORRIGIDO
+  // useParams funcionando SILENCIOSAMENTE
   useEffect(() => {
-    console.log("useEffect executando com id:", id);
-    
-    if (id && id !== "undefined") {
+    if (id) {
       const faqIndex = parseInt(id) - 1;
-      console.log("FAQ index calculado:", faqIndex);
-      
       if (faqIndex >= 0 && faqIndex < faqItems.length) {
-        console.log("Abrindo FAQ index:", faqIndex);
         setOpenIndex(faqIndex);
-      } else {
-        console.log("Index inválido:", faqIndex);
       }
-    } else {
-      console.log("Sem ID ou ID undefined");
-      setOpenIndex(null);
     }
   }, [id]);
 
@@ -38,11 +24,23 @@ const Faq = () => {
     },
     {
       question: "Quais especialidades estão disponíveis?",
-      answer: "Oferecemos mais de 15 especialidades médicas, incluindo Cardiologia, Dermatologia, Pediatria, Psiquiatria, Ortopedia, Ginecologia, Endocrinologia e muitas outras."
+      answer: "Oferecemos mais de 15 especialidades médicas, incluindo Cardiologia, Dermatologia, Pediatria, Psiquiatria, Ortopedia, Ginecologia, Endocrinologia e muitas outras. Nossa equipe é composta por profissionais qualificados do Hospital das Clínicas."
     },
     {
       question: "Como funciona a consulta por videochamada?",
-      answer: "Após o agendamento, você receberá um link de acesso para a videochamada. Basta clicar no link no horário marcado usando um computador ou smartphone com câmera e microfone."
+      answer: "Após o agendamento, você receberá um link de acesso para a videochamada. Basta clicar no link no horário marcado usando um computador ou smartphone com câmera e microfone. Nossa plataforma é simples e intuitiva."
+    },
+    {
+      question: "Os médicos podem prescrever receitas?",
+      answer: "Sim, nossos médicos podem prescrever receitas médicas digitais, que são válidas em todo território nacional. As receitas são enviadas por email imediatamente após a consulta."
+    },
+    {
+      question: "Quais são os valores das consultas?",
+      answer: "Nossos preços são acessíveis e variam de acordo com a especialidade. Consultas a partir de R$ 80,00. Aceitamos cartões de crédito, débito e PIX."
+    },
+    {
+      question: "Preciso de algum equipamento específico?",
+      answer: "Você precisa de um dispositivo (computador, tablet ou smartphone) com câmera, microfone, alto-falante e conexão estável com a internet. Não é necessário instalar nenhum software adicional."
     }
   ];
 
@@ -54,33 +52,22 @@ const Faq = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header com indicação se tem ID */}
+          {/* Header limpo */}
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-800 mb-4">
               Perguntas Frequentes
             </h1>
             <p className="text-xl text-gray-600">
-              {id ? `FAQ #${id}` : "Encontre respostas para dúvidas comuns"}
+              Encontre respostas para as dúvidas mais comuns sobre nossos serviços
             </p>
-            
-            {/* DEBUG VISUAL */}
-            {id && (
-              <div className="mt-4 p-3 bg-green-100 rounded-lg">
-                <p className="text-green-700 text-sm">
-                  <strong>useParams funcionando!</strong> ID capturado: <code>{id}</code>
-                </p>
-              </div>
-            )}
           </div>
 
-          {/* FAQ Items */}
+          {/* FAQ Items - TOTALMENTE LIMPO */}
           <div className="space-y-4">
             {faqItems.map((item, index) => (
               <div
                 key={index}
-                className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all ${
-                  openIndex === index ? 'ring-2 ring-blue-500' : ''
-                }`}
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
               >
                 <button
                   onClick={() => toggleItem(index)}
@@ -112,13 +99,22 @@ const Faq = () => {
             ))}
           </div>
 
-          {/* Links de teste */}
-          <div className="mt-8 text-center space-x-4">
-            <p className="text-gray-600 mb-2">Teste useParams:</p>
-            <Link to="/faq/1" className="text-blue-600 hover:text-blue-800">FAQ 1</Link>
-            <Link to="/faq/2" className="text-blue-600 hover:text-blue-800">FAQ 2</Link>
-            <Link to="/faq/3" className="text-blue-600 hover:text-blue-800">FAQ 3</Link>
-            <Link to="/faq" className="text-gray-600 hover:text-gray-800">Todas FAQs</Link>
+          {/* CTA Section - APENAS ISSO É NECESSÁRIO */}
+          <div className="mt-12 text-center">
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                Não encontrou o que procurava?
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Nossa equipe de atendimento está pronta para ajudar você
+              </p>
+              <Link 
+                to="/contato" 
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block"
+              >
+                Entrar em Contato
+              </Link>
+            </div>
           </div>
         </div>
       </div>
