@@ -58,4 +58,4 @@ npm run build
 🔗 Links Importantes
 Repositório: [https://github.com/challenge-pmg/Front-end.git]
 
-Vídeo Demo: [em breve]
+Vídeo Demo: [https://www.youtube.com/watch?v=T-LoQZWZnUQ]
