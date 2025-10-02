@@ -18,7 +18,7 @@ export default function Integrantes() {
       nome: "Pedro Henrique de Oliveira", 
       rm: "RM562312",
       turma: "1TDSPW",
-      github: "https://github.com/pedrohenrique",
+      github: "https://github.com/pedrinzz10",
       linkedin: "https://www.linkedin.com/in/pedro-henrique-oliveira-484336261/",
       foto: "https://github.com/pedrinzz10.png",
     },
