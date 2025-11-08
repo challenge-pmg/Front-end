@@ -42,7 +42,11 @@ const buildError = async (response: Response) => {
   };
 };
 
-export async function fetchJson(path: string, options: RequestInit = {}, { requireAuth = true } = {}) {
+export async function fetchJson(
+  path: string,
+  options: RequestInit = {},
+  { requireAuth = true, timeoutMs = 15000 } = {},
+) {
   const storedUser = getStoredSession();
   if (requireAuth && !storedUser) {
     throw { status: 401, message: STATUS_MESSAGES[401], body: null };
@@ -57,40 +61,46 @@ export async function fetchJson(path: string, options: RequestInit = {}, { requi
     if (storedUser.role) headers.set('X-User-Role', storedUser.role);
   }
 
+  const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const timeoutId = controller ? setTimeout(() => controller.abort(), timeoutMs) : undefined;
+
   const fetchOptions: RequestInit = {
     ...options,
     headers,
+    signal: controller?.signal ?? options.signal,
     body:
       options.body && typeof options.body === 'object' && !(options.body instanceof FormData)
         ? JSON.stringify(options.body)
         : options.body,
   };
 
-  const response = await fetch(`${API_BASE}${path}`, fetchOptions);
+  try {
+    const response = await fetch(`${API_BASE}${path}`, fetchOptions);
 
-  if (response.status === 204) {
-    return { ok: true };
-  }
-
-  if (response.ok) {
-    const contentType = response.headers.get('Content-Type') || '';
-    if (contentType.includes('application/json')) {
-      return response.json();
+    if (response.status === 204) {
+      return { ok: true };
     }
-    return response.text();
+
+    if (response.ok) {
+      const contentType = response.headers.get('Content-Type') || '';
+      if (contentType.includes('application/json')) {
+        return response.json();
+      }
+      return response.text();
+    }
+
+    throw await buildError(response);
+  } catch (error: any) {
+    if (error?.name === 'AbortError') {
+      throw { status: 0, message: 'Tempo limite excedido. Tente novamente.', body: null };
+    }
+    throw error;
+  } finally {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
   }
-
-  throw await buildError(response);
 }
-
-const withAuth = (requireAuth = true) => ({ requireAuth });
-
-// Auth e cadastro
-export const login = (payload: any) => fetchJson('/auth/login', { method: 'POST', body: payload }, withAuth(false));
-export const registerPaciente = (payload: any) =>
-  fetchJson('/pacientes', { method: 'POST', body: payload }, withAuth(false));
-export const registerProfissional = (payload: any) =>
-  fetchJson('/profissionais', { method: 'POST', body: payload }, withAuth(false));
 
 const buildQuery = (params: Record<string, any> = {}) => {
   const search = new URLSearchParams();
@@ -103,10 +113,16 @@ const buildQuery = (params: Record<string, any> = {}) => {
   return qs ? `?${qs}` : '';
 };
 
-// Profissionais auxiliares
+const withAuth = (requireAuth = true) => ({ requireAuth });
+
+export const login = (payload: any) => fetchJson('/auth/login', { method: 'POST', body: payload }, withAuth(false));
+export const registerPaciente = (payload: any) =>
+  fetchJson('/pacientes', { method: 'POST', body: payload }, withAuth(false));
+export const registerProfissional = (payload: any) =>
+  fetchJson('/profissionais', { method: 'POST', body: payload }, withAuth(false));
+
 export const getProfissionais = () => fetchJson('/profissionais', {}, withAuth());
 
-// Disponibilidades
 export const getDisponibilidades = (params?: Record<string, any>) =>
   fetchJson(`/disponibilidades${buildQuery(params)}`, {}, withAuth());
 export const createDisponibilidade = (payload: any) =>
@@ -114,7 +130,6 @@ export const createDisponibilidade = (payload: any) =>
 export const deleteDisponibilidade = (id: number) =>
   fetchJson(`/disponibilidades/${id}`, { method: 'DELETE' }, withAuth());
 
-// Consultas
 export const getConsultasByPaciente = (pacienteId: number) =>
   fetchJson(`/consultas${buildQuery({ pacienteId })}`, {}, withAuth());
 export const getConsultasByProfissional = (profissionalId: number) =>
