@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import PatientDashboard from './pages/dashboard/PatientDashboard'
 import ProfessionalDashboard from './pages/dashboard/ProfessionalDashboard'
+import ConsultaDetail from './pages/dashboard/ConsultaDetail'
 import { fetchJson } from './services/api'
 
 const ApiWarmup: React.FC = () => {
@@ -59,6 +60,14 @@ export default function App(){
               element={
                 <RequireAuth>
                   <DashboardRouter />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consultas/:id"
+              element={
+                <RequireAuth>
+                  <ConsultaDetail />
                 </RequireAuth>
               }
             />

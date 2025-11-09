@@ -1,4 +1,5 @@
 ﻿import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Table from '../../components/Table';
 import FormField from '../../components/FormField';
 import type { ConsultaResponse, ConsultaStatus, DisponibilidadeResponse } from '../../services/api';
@@ -21,12 +22,14 @@ const statusOptions = [
 
 const ProfessionalDashboard = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const profissionalId = user?.profissionalId;
   const [{ start, end }, setRange] = useState(() => buildDateRange(14));
   const [slots, setSlots] = useState<DisponibilidadeResponse[]>([]);
   const [consultas, setConsultas] = useState<ConsultaResponse[]>([]);
   const [novoSlot, setNovoSlot] = useState('');
   const [feedback, setFeedback] = useState({ error: '', success: '' });
+  const [showRefreshHint, setShowRefreshHint] = useState(true);
 
   useEffect(() => {
     if (!profissionalId) return;
@@ -96,6 +99,20 @@ const ProfessionalDashboard = () => {
 
   return (
     <div className="space-y-6">
+      {showRefreshHint && (
+        <div className="flex items-start justify-between rounded border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+          <p>
+            Caso a agenda não carregue ou apareça “Não autenticado”, atualize a página para recuperar a sessão com a API.
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowRefreshHint(false)}
+            className="ml-4 text-xs font-semibold uppercase tracking-wide text-amber-700"
+          >
+            Entendi
+          </button>
+        </div>
+      )}
       <div className="rounded border border-slate-200 bg-white p-4 shadow">
         <h1 className="text-xl font-semibold text-slate-900">Disponibilidades</h1>
         <form className="mt-4 grid gap-4 md:grid-cols-3" onSubmit={handleNovoSlot}>
@@ -143,17 +160,26 @@ const ProfessionalDashboard = () => {
           ]}
           data={consultas}
           renderActions={(row: ConsultaResponse) => (
-            <select
-              className="rounded border border-slate-300 px-2 py-1 text-xs"
-              value={row.status}
-              onChange={(e) => handleStatusChange(row.id, e.target.value as ConsultaStatus)}
-            >
-              {statusOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
+            <div className="flex flex-col gap-2 text-xs">
+              <select
+                className="rounded border border-slate-300 px-2 py-1"
+                value={row.status}
+                onChange={(e) => handleStatusChange(row.id, e.target.value as ConsultaStatus)}
+              >
+                {statusOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                className="text-blue-600 hover:underline"
+                onClick={() => navigate(`/consultas/${row.id}`)}
+              >
+                Detalhes
+              </button>
+            </div>
           )}
         />
       </div>
@@ -165,3 +191,5 @@ const ProfessionalDashboard = () => {
 };
 
 export default ProfessionalDashboard;
+
+

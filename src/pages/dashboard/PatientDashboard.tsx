@@ -1,4 +1,5 @@
 ﻿import { FormEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Table from '../../components/Table';
 import FormField from '../../components/FormField';
 import type { ConsultaResponse, DisponibilidadeResponse, ProfissionalResponse } from '../../services/api';
@@ -14,6 +15,7 @@ import { buildDateRange, formatDateTime } from '../../utils/dateHelpers';
 
 const PatientDashboard = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [profissionais, setProfissionais] = useState<ProfissionalResponse[]>([]);
   const [selectedProfissional, setSelectedProfissional] = useState('');
   const [{ start, end }, setRange] = useState(() => buildDateRange(7));
@@ -22,6 +24,7 @@ const PatientDashboard = () => {
   const [slotSelecionado, setSlotSelecionado] = useState<DisponibilidadeResponse | null>(null);
   const [tipoConsulta, setTipoConsulta] = useState('PRESENCIAL');
   const [feedback, setFeedback] = useState({ error: '', success: '' });
+  const [showRefreshHint, setShowRefreshHint] = useState(true);
   const pacienteId = user?.pacienteId;
 
   useEffect(() => {
@@ -123,6 +126,20 @@ const PatientDashboard = () => {
 
   return (
     <div className="space-y-6">
+      {showRefreshHint && (
+        <div className="flex items-start justify-between rounded border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+          <p>
+            Caso as consultas não apareçam ou surja o aviso “Não autenticado”, recarregue a página para restabelecer a sessão.
+          </p>
+          <button
+            type="button"
+            onClick={() => setShowRefreshHint(false)}
+            className="ml-4 text-xs font-semibold uppercase tracking-wide text-amber-700"
+          >
+            Entendi
+          </button>
+        </div>
+      )}
       <div className="rounded border border-slate-200 bg-white p-4 shadow">
         <h1 className="text-xl font-semibold text-slate-900">Disponibilidades</h1>
         <form className="mt-4 grid gap-4 md:grid-cols-3" onSubmit={handleRangeSubmit}>
@@ -207,13 +224,18 @@ const PatientDashboard = () => {
             { header: 'Status', accessor: 'status' },
           ]}
           data={consultas}
-          renderActions={(row: ConsultaResponse) =>
-            row.status !== 'CANCELADA' && (
-              <button className="text-red-600 hover:underline" onClick={() => handleCancelar(row.id)}>
-                Cancelar
+          renderActions={(row: ConsultaResponse) => (
+            <div className="flex flex-wrap gap-3 text-sm">
+              <button className="text-blue-600 hover:underline" onClick={() => navigate(`/consultas/${row.id}`)}>
+                Detalhes
               </button>
-            )
-          }
+              {row.status !== 'CANCELADA' && (
+                <button className="text-red-600 hover:underline" onClick={() => handleCancelar(row.id)}>
+                  Cancelar
+                </button>
+              )}
+            </div>
+          )}
         />
       </div>
 
@@ -224,3 +246,5 @@ const PatientDashboard = () => {
 };
 
 export default PatientDashboard;
+
+

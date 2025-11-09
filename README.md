@@ -1,176 +1,124 @@
-﻿# TeleSaÃºde HC - Frontend
+# HC Teleconsulta – Front-end (Sprint 4)
 
-## ðŸ“‹ Sobre o Projeto
-Sistema de telemedicina desenvolvido para o Hospital das ClÃ­nicas, permitindo atendimento mÃ©dico remoto com agendamento online, prontuÃ¡rio eletrÃ´nico e videochamadas.
+Aplicação SPA em React + Vite + TypeScript responsável por consumir a API Java do HC Teleconsulta. O objetivo desta sprint foi migrar todo o front-end para uma arquitetura modular, responsiva e integrada ao backend oficial (slots/disponibilidades, consultas e autenticação).
 
-## ðŸš€ Tecnologias Utilizadas
-- **React** + **Vite** + **TypeScript**
-- **TailwindCSS** para estilizaÃ§Ã£o
-- **React Router DOM** para navegaÃ§Ã£o SPA
-- **React Hook Form** para validaÃ§Ãµes
-- **React Icons** para Ã­cones
+## 🔗 Links importantes
+- **Deploy (Vercel):** https://hc-teleconsulta-pg.vercel.app
+- **Repositório GitHub:** https://github.com/challenge-pmg/Front-end
+- **API Java (Render):** https://hc-teleonsulta-api-java-1.onrender.com
+  - OpenAPI: https://hc-teleonsulta-api-java-1.onrender.com/q/openapi
+  - Swagger UI: https://hc-teleonsulta-api-java-1.onrender.com/q/swagger-ui/
+- **Vídeo (YouTube):** https://www.youtube.com/watch?v=T-LoQZWZnUQ
 
-## ðŸ‘¥ Integrantes do Grupo
-- Guilherme Lisboa Silva - RM565187 - 1TDSPW
-- Pedro Henrique de Oliveira - RM562312 - 1TDSPW
-- Rafael Rodrigues Trindade** - RM564303 - 1TDSPJ
+## 🧰 Stack principal
+- React 18 + Vite + TypeScript
+- React Router DOM (SPA com rotas públicas/privadas)
+- TailwindCSS (estilização responsiva)
+- React Hook Form (cadastros)
+- React Icons
+- Fetch nativo + Context API (sessão, headers `X-User-Id` / `X-User-Role`)
 
-## ðŸ“ Estrutura do Projeto
-src/
-â”œâ”€â”€ components/ # Componentes reutilizÃ¡veis
-â”‚ â”œâ”€â”€ Header.tsx # CabeÃ§alho com navegaÃ§Ã£o
-â”‚ â”œâ”€â”€ Logo.tsx # Logo da aplicaÃ§Ã£o
-â”‚ â””â”€â”€ ContactForm.tsx # FormulÃ¡rio de contato
-â”œâ”€â”€ pages/ # PÃ¡ginas da aplicaÃ§Ã£o
-â”‚ â”œâ”€â”€ Home.tsx # PÃ¡gina inicial
-â”‚ â”œâ”€â”€ Sobre.tsx # Sobre o projeto
-â”‚ â”œâ”€â”€ FAQ.tsx # Perguntas frequentes
-â”‚ â”œâ”€â”€ Integrantes.tsx # Equipe de desenvolvimento
-â”‚ â””â”€â”€ Contato.tsx # PÃ¡gina de contato
-â”œâ”€â”€ hooks/ # Custom hooks
-â”‚ â””â”€â”€ usePageTitle.ts # Hook para tÃ­tulos dinÃ¢micos
-â””â”€â”€ App.tsx # Componente principal
+## ✅ Requisitos e execução
+| Requisito | Status |
+| --- | --- |
+| SPA com rotas estáticas e dinâmicas (`/consultas/:id`) | ✔️ |
+| Tipagens (types, unions) no client | ✔️ |
+| Tailwind responsivo (XS → XL) | ✔️ |
+| Deploy na Vercel + consumo remoto | ✔️ |
+| Integração completa com API Java (CRUD, erros, headers) | ✔️ |
+| README em Markdown + links | ✔️ |
+| Vídeo demonstrativo (≤3 min) | ✔️ |
 
-text
+### Pré-requisitos
+- Node.js 18+
+- npm 9+
 
-## ðŸŽ¯ Funcionalidades Implementadas
-- âœ… **SPA (Single Page Application)** com React Router
-- âœ… **FormulÃ¡rios validados** com React Hook Form
-- âœ… **Design responsivo** com TailwindCSS
-- âœ… **ComponentizaÃ§Ã£o** e reutilizaÃ§Ã£o
-- âœ… **Hooks React** (useState, useEffect)
-- âœ… **NavegaÃ§Ã£o** entre pÃ¡ginas
-- âœ… **ValidaÃ§Ãµes** em tempo real
-- âœ… **Interface moderna** e acessÃ­vel
-
-## ðŸ›  Como Executar
+### Como rodar
 ```bash
-# Instalar dependÃªncias
+git clone https://github.com/challenge-pmg/Front-end.git
+cd Front-end
 npm install
+cp .env.example .env.local   # ou crie manualmente
+npm run dev                  # http://localhost:5173
 
-# Executar em modo desenvolvimento
-npm run dev
-
-# Build para produÃ§Ã£o
+# Testes / build
+npm run test
 npm run build
-
-
-ðŸ”— Links Importantes
-RepositÃ³rio: [https://github.com/challenge-pmg/Front-end.git]
-
-VÃ­deo Demo: [https://www.youtube.com/watch?v=T-LoQZWZnUQ]
-
-## Atualização HC Teleconsulta (nov/2025)
-- **Base da API**: `https://hc-teleonsulta-api-java-1.onrender.com` (já configurada em `.env.local` e nas variáveis da Vercel). Sempre reinicie `npm run dev` após mudar o valor.
-- **Links de teleconsulta automáticos**: o backend agora gera `linkAcesso` quando `tipoConsulta = TELECONSULTA`. Os formulários de paciente/profissional não exibem mais campos de link; basta escolher o slot e confirmar. Consultas presenciais continuam exibindo `linkAcesso = null`.
-- **Mensagens de erro 400**: `POST /auth/login` e `POST /consultas` retornam textos descritivos (ex.: “Paciente sem cadastro”). O front já mostra o `err.message`, então valide sempre no navegador.
-- **Carga oficial**: `db/ddl/load_sample_data.sql` cria dados em 2030, com três pacientes e dois profissionais.
-
-### Logins oficiais (dados de teste)
-| Perfil | Email | Senha |
-| --- | --- | --- |
-| Paciente | ana.paciente@hc.com | 123456 |
-| Paciente | bruno.paciente@hc.com | 123456 |
-| Paciente | carla.paciente@hc.com | 123456 |
-| Profissional | henrique.prof@hc.com | 123456 |
-| Profissional | marina.prof@hc.com | 123456 |
-
-> Dica: copie um desses logins na tela de autenticação ou selecione-os na lista de exemplos do `/login`.
-
-### Como validar rapidamente
-1. `npm install && npm run dev`.
-2. Faça login como paciente, abra “Minhas consultas” e confirme que o botão **Abrir reunião** aparece apenas quando a API devolve `linkAcesso`.
-3. Faça login como profissional, cadastre um slot via `/disponibilidades` e marque/cancele consultas. O link exibido também vem diretamente da API.
-4. Caso ocorra erro de CORS/fetch, garanta que todas as abas foram recarregadas usando a nova base e, se necessário, limpe cache/service workers do navegador.
-
-## API HC Teleconsulta – Páginas adicionadas pela Sprint 4
-- **Usuários**: listagem, criação, detalhe/edição e remoção usando `/usuarios`.
-- **Pacientes**: CRUD completo com bloqueio visual para pacientes acessarem apenas o próprio cadastro.
-- **Profissionais**: CRUD completo + manutenção de tipos em `/profissionais/tipos`.
-- **Consultas**: agenda com filtros por papel, formulário completo e tela para atualização de status.
-- Componentes utilitários adicionados (`LoginModal`, `Table`, `FormField`) e sessão provisória controlada via `AuthContext`.
-
-## Como rodar o projeto (Sprint 4)
-```bash
-npm install
-npm run dev
-# abre em http://localhost:5173
 ```
-
-### Variável opcional
-Crie um arquivo `.env.local` (ou `.env`) com:
-```
-VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
-```
-Sem essa variável o app usa automaticamente a URL acima.
-
-## Fluxo de login via Header (modal)
-1. Clique em **Entrar** no cabeçalho (desktop ou mobile).
-2. Escolha **Entrar** e selecione um usuário já existente (GET `/usuarios`) **ou** abra a aba **Criar conta** (POST `/usuarios`).
-3. Ao concluir, o modal fecha e a sessão `{ userId, role, nome, email }` é armazenada em `localStorage`. Os botões/ações passam a respeitar o papel logado.
-
-## Endpoints consumidos
-| Método | Rota | Uso |
-| --- | --- | --- |
-| GET/POST/PUT/DELETE | `/usuarios`, `/usuarios/{id}` | CRUD de usuários e login fake |
-| GET/POST/PUT/DELETE | `/pacientes`, `/pacientes/{id}` | Cadastro de pacientes e autoatendimento |
-| GET/POST/PUT/DELETE | `/profissionais`, `/profissionais/{id}` | Cadastro da equipe |
-| GET/POST | `/profissionais/tipos` | Manutenção das especialidades |
-| GET/POST/PUT/DELETE | `/consultas`, `/consultas/{id}` | Agenda administrativa |
-| PUT | `/consultas/{id}/status` | Atualização rápida de status |
-
-## Regras e restrições da Sprint 4
-- Nenhum arquivo pré-existente foi removido; mudanças estruturais foram adicionadas como apêndice.
-- Todo consumo HTTP usa **fetch** nativo, sem Axios/Bootstrap/CDNs externas.
-- Headers `X-User-Id`/`X-User-Role` são aplicados automaticamente via `src/services/api.js`.
-- Regras de visibilidade por papel são “soft guards”: ações ficam ocultas/desabilitadas para perfis sem permissão, mantendo as rotas públicas existentes.
-
-## Atualização agenda + slots (Sprint atual)
-- Login agora usa POST /auth/login com email/senha e guarda pacienteId/profissionalId no contexto.
-- Criação de contas dividida em paciente e profissional (com validação de VITE_FUNCIONARIO_CODE).
-- Dashboard do paciente exibe disponibilidades, permite selecionar slot e agendar via POST /consultas, além de listar/cancelar futuras.
-- Dashboard do profissional permite abrir/remover slots (/disponibilidades) e atualizar o status das consultas do dia.
-- Client HTTP atualizado em src/services/api.js com os novos endpoints (uth, disponibilidades, consultas filtradas).
-- Adicionamos fixtures (src/mocks/sampleCredentials.ts) e utilidades de data em src/utils/dateHelpers.ts (com testes via Vitest).
 
 ### Variáveis de ambiente
-`
-VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
-VITE_FUNCIONARIO_CODE=HC-ACCESS
-`
-> Dica: durante o desenvolvimento você pode remover VITE_API_BASE_URL para usar o proxy /teleconsulta-api configurado no Vite.
-
-### Fluxo principal
-1. Acesse /login, autentique-se com um dos logins de exemplo ou crie uma conta.
-2. Você será redirecionado para /dashboard, que alterna automaticamente entre os painéis de paciente e profissional.
-3. Pacientes: filtre por profissional, selecione um slot e confirme o tipo de consulta. Consultas futuras podem ser canceladas.
-4. Profissionais: crie/remova disponibilidades e atualize o status das consultas sem sair do painel.
-
-### Testes e build
-- 
-pm run test executa os testes unitários do Vitest para os helpers de data.
-- 
-pm run build garante que o bundle (Vite) continua íntegro e pronto para deploy.
-
-## Nova API de slots
-- Login via `POST /auth/login`, guardando `pacienteId`/`profissionalId`.
-- Dashboards remodelados: pacientes agendam via disponibilidades e profissionais mantêm a agenda.
-- Serviços atualizados em `src/services/api.js`.
-
-### Ambiente
+Crie `.env.local` (não versionado):
 ```
 VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
 VITE_FUNCIONARIO_CODE=HC-ACCESS
 ```
+> No deploy foi configurado o mesmo host para evitar divergências.
 
-### Fluxos
-1. `/login` ? autenticação ou criação de conta.
-2. `/dashboard` ? exibe painel automático conforme role.
-3. Pacientes escolhem slots livres e cancelam consultas.
-4. Profissionais administram disponibilidades e status.
+## 🗂️ Estrutura resumida
+```
+src/
+├─ components/        # Header, FormField, Table, LoginModal etc.
+├─ context/           # AuthContext (localStorage + headers)
+├─ pages/
+│   ├─ Home, FAQ, Integrantes, Contato, Login
+│   └─ dashboard/
+│        ├─ PatientDashboard.tsx
+│        ├─ ProfessionalDashboard.tsx
+│        └─ ConsultaDetail.tsx   <-- rota dinâmica /consultas/:id
+├─ services/api.ts    # Fetch helper, tipos, endpoints
+├─ mocks/             # sampleCredentials.ts (logins oficiais)
+├─ styles/            # Tailwind globals
+└─ utils/             # date helpers (com testes Vitest)
+```
 
-### Testes
-- `npm run test`
-- `npm run build`
-**Backend remoto**
-Defina `VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com` tanto no `.env.local` quanto nas variáveis da Vercel para que o front use sempre a mesma API (sem proxy local). O proxy `/teleconsulta-api` permanece disponível apenas como fallback.
+## 🔐 Fluxos implementados
+1. **Login** (`POST /auth/login`) – Armazena `{ usuarioId, role, pacienteId, profissionalId }` no `AuthContext`.
+2. **Dashboard do paciente**
+   - Lista disponibilidades (`GET /disponibilidades`) e marca consulta via `POST /consultas`.
+   - Cancela consultas (`PUT /consultas/{id}/status`) e abre detalhes (`/consultas/:id`).
+3. **Dashboard do profissional**
+   - Gerencia slots (`GET/POST/DELETE /disponibilidades`).
+   - Acompanha consultas (`GET /consultas?profissionalId=...`), atualiza status e abre detalhes.
+4. **Consulta detail page** – rota dinâmica `/consultas/:id`, permitindo revisar informações e alterar status.
+5. **Logins/mocks** – acessíveis no `/login` e descritos abaixo para testes rápidos.
+
+## 🌐 Integração com a API
+| Verbo | Endpoint | Uso no front |
+| --- | --- | --- |
+| POST | `/auth/login` | autenticação (paciente/profissional) |
+| GET  | `/profissionais`, `/profissionais/tipos` | combos e dashboards |
+| GET/POST/DELETE | `/disponibilidades` | slots do profissional |
+| GET | `/consultas?pacienteId=`, `/consultas?profissionalId=` | dashboards filtrados |
+| GET | `/consultas/{id}` | rota dinâmica de detalhes |
+| POST | `/consultas` | agendamento (link gerado pelo back) |
+| PUT  | `/consultas/{id}/status` | atualização de status ou cancelamento |
+
+Todas as chamadas usam fetch nativo e `fetchJson` (timeout + retry + mapeamento de mensagens 400/401/403/404/409).
+
+## 👩‍⚕️ Logins oficiais (script `load_sample_data.sql`)
+| Perfil | Email | Senha |
+| --- | --- | --- |
+| Paciente – Ana | ana.paciente@hc.com | 123456 |
+| Paciente – Bruno | bruno.paciente@hc.com | 123456 |
+| Paciente – Carla | carla.paciente@hc.com | 123456 |
+| Profissional – Henrique | henrique.prof@hc.com | 123456 |
+| Profissional – Marina | marina.prof@hc.com | 123456 |
+
+> Para criar profissionais manualmente, informe o código interno definido em `VITE_FUNCIONARIO_CODE`.
+
+## 📱 Responsividade & UI
+- Layout fluido usando utilitários Tailwind (`grid`, `flex`, `md:`, `lg:` etc.) cobrindo XS → XL.
+- Header fixo com CTA “Entrar” (modal) e navegação condicional por role.
+- Padrões de feedback (`text-red-600`, `bg-emerald-50`, alerts para erros de API) e avisos de reconexão.
+
+## 📦 Deploy & versionamento
+- **Deploy automático**: branch `main` → Vercel (`hc-teleconsulta-pg.vercel.app`). Após cada deploy, utilize `GET /warmup` (Render) ou aguarde o ping automático para evitar cold start.
+- **Versionamento**: repositório GitHub público com histórico de commits por integrante (≥5). Utilize Git/GitHub/Gitflow para novas features e mantenha o README como fonte de verdade.
+
+## ▶️ Vídeo
+Apresentação de até 3 minutos mostrando funcionalidades, layout responsivo e integração com a API:  
+https://www.youtube.com/watch?v=T-LoQZWZnUQ
+
+---
+Em caso de dúvidas sobre ambiente, testes ou integrações adicionais, consulte este README ou abra uma issue no repositório. Boas contribuições!
+

@@ -221,6 +221,8 @@ export const getConsultasByPaciente = (pacienteId: number) =>
   fetchJson(`/consultas${buildQuery({ pacienteId })}`, {}, withAuth()) as Promise<ConsultaResponse[]>;
 export const getConsultasByProfissional = (profissionalId: number) =>
   fetchJson(`/consultas${buildQuery({ profissionalId })}`, {}, withAuth()) as Promise<ConsultaResponse[]>;
+export const getConsultaById = (id: number) =>
+  fetchJson(`/consultas/${id}`, {}, withAuth()) as Promise<ConsultaResponse>;
 export const createConsulta = (payload: ConsultaRequest) =>
   fetchJson('/consultas', { method: 'POST', body: payload }, withAuth()) as Promise<ConsultaResponse>;
 export const updateConsultaStatus = (id: number, payload: { status: ConsultaStatus }) =>
