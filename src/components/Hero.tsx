@@ -1,19 +1,18 @@
-import React from 'react'
-
-export default function Hero(){
+export default function Hero() {
   return (
-    <section className="container mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
-      <div>
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-4">TeleSaúde HC - Sua consulta mais perto de você</h1>
-        <p className="text-slate-600 mb-6">Plataforma para agendamento e teleconsultas com foco em facilitar o acesso à saúde.</p>
-        <div className="space-x-3">
-          <a href="#contato" className="inline-block bg-teal-500 text-white px-4 py-2 rounded">Entrar em contato</a>
-          <a href="/solucao" className="inline-block border border-slate-300 px-4 py-2 rounded">Ver solução</a>
-        </div>
-      </div>
-      <div className="rounded-lg overflow-hidden shadow-lg">
-        <img src="/assets/images/hero.jpeg" alt="hero" className="w-full h-64 object-cover"/>
-      </div>
+    <section className="bg-gradient-to-r from-primary to-secondary text-white py-20 text-center">
+      <h1 className="text-4xl md:text-6xl font-title mb-6">
+        Conecte Pacientes e Profissionais
+      </h1>
+      <p className="max-w-xl mx-auto mb-8 text-lg">
+        Plataforma moderna para agendamento e acompanhamento médico.
+      </p>
+      <a
+        href="/sobre"
+        className="bg-accent text-dark px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition"
+      >
+        Saiba Mais
+      </a>
     </section>
-  )
+  );
 }
