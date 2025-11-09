@@ -127,25 +127,79 @@ const buildQuery = (params: Record<string, any> = {}) => {
 
 const withAuth = (requireAuth = true) => ({ requireAuth });
 
-export const login = (payload: any) => fetchJson('/auth/login', { method: 'POST', body: payload }, withAuth(false));
+export type Role = 'PACIENTE' | 'PROFISSIONAL';
+
+export type LoginPayload = {
+  email: string;
+  senha: string;
+};
+
+export type AuthResponse = {
+  usuarioId: number;
+  nome: string;
+  email: string;
+  role: Role;
+  pacienteId: number | null;
+  profissionalId: number | null;
+};
+
+export type ProfissionalResponse = {
+  id: number;
+  nome: string;
+  especialidade?: string | null;
+};
+
+export type DisponibilidadeResponse = {
+  id: number;
+  profissionalId: number;
+  dataHora: string;
+  profissionalNome?: string;
+  especialidade?: string | null;
+};
+
+export type ConsultaStatus = 'AGENDADA' | 'REALIZADA' | 'CANCELADA' | 'FALTOU';
+
+export type ConsultaRequest = {
+  pacienteId: number;
+  profissionalId: number;
+  disponibilidadeId: number;
+  tipoConsulta: 'PRESENCIAL' | 'TELECONSULTA';
+};
+
+export type ConsultaResponse = {
+  id: number;
+  pacienteId: number;
+  profissionalId: number;
+  disponibilidadeId: number;
+  dataHora: string;
+  tipoConsulta: 'PRESENCIAL' | 'TELECONSULTA';
+  status: ConsultaStatus;
+  linkAcesso: string | null;
+  pacienteNome?: string;
+  profissionalNome?: string;
+};
+
+export const login = (payload: LoginPayload) =>
+  fetchJson('/auth/login', { method: 'POST', body: payload }, withAuth(false)) as Promise<AuthResponse>;
 export const registerPaciente = (payload: any) =>
   fetchJson('/pacientes', { method: 'POST', body: payload }, withAuth(false));
 export const registerProfissional = (payload: any) =>
   fetchJson('/profissionais', { method: 'POST', body: payload }, withAuth(false));
 
-export const getProfissionais = () => fetchJson('/profissionais', {}, withAuth());
+export const getProfissionais = () => fetchJson('/profissionais', {}, withAuth()) as Promise<ProfissionalResponse[]>;
 
 export const getDisponibilidades = (params?: Record<string, any>) =>
-  fetchJson(`/disponibilidades${buildQuery(params)}`, {}, withAuth());
+  fetchJson(`/disponibilidades${buildQuery(params)}`, {}, withAuth()) as Promise<DisponibilidadeResponse[]>;
 export const createDisponibilidade = (payload: any) =>
   fetchJson('/disponibilidades', { method: 'POST', body: payload }, withAuth());
 export const deleteDisponibilidade = (id: number) =>
   fetchJson(`/disponibilidades/${id}`, { method: 'DELETE' }, withAuth());
 
 export const getConsultasByPaciente = (pacienteId: number) =>
-  fetchJson(`/consultas${buildQuery({ pacienteId })}`, {}, withAuth());
+  fetchJson(`/consultas${buildQuery({ pacienteId })}`, {}, withAuth()) as Promise<ConsultaResponse[]>;
 export const getConsultasByProfissional = (profissionalId: number) =>
-  fetchJson(`/consultas${buildQuery({ profissionalId })}`, {}, withAuth());
-export const createConsulta = (payload: any) => fetchJson('/consultas', { method: 'POST', body: payload }, withAuth());
-export const updateConsultaStatus = (id: number, payload: any) =>
-  fetchJson(`/consultas/${id}/status`, { method: 'PUT', body: payload }, withAuth());
+  fetchJson(`/consultas${buildQuery({ profissionalId })}`, {}, withAuth()) as Promise<ConsultaResponse[]>;
+export const createConsulta = (payload: ConsultaRequest) =>
+  fetchJson('/consultas', { method: 'POST', body: payload }, withAuth()) as Promise<ConsultaResponse>;
+export const updateConsultaStatus = (id: number, payload: { status: ConsultaStatus }) =>
+  fetchJson(`/consultas/${id}/status`, { method: 'PUT', body: payload }, withAuth()) as Promise<ConsultaResponse>;

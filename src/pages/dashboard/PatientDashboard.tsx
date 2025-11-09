@@ -1,6 +1,7 @@
-import { FormEvent, useEffect, useState } from 'react';
+Ôªøimport { FormEvent, useEffect, useState } from 'react';
 import Table from '../../components/Table';
 import FormField from '../../components/FormField';
+import type { ConsultaResponse, DisponibilidadeResponse, ProfissionalResponse } from '../../services/api';
 import {
   createConsulta,
   getConsultasByPaciente,
@@ -13,12 +14,12 @@ import { buildDateRange, formatDateTime } from '../../utils/dateHelpers';
 
 const PatientDashboard = () => {
   const { user } = useAuth();
-  const [profissionais, setProfissionais] = useState<any[]>([]);
+  const [profissionais, setProfissionais] = useState<ProfissionalResponse[]>([]);
   const [selectedProfissional, setSelectedProfissional] = useState('');
   const [{ start, end }, setRange] = useState(() => buildDateRange(7));
-  const [disponibilidades, setDisponibilidades] = useState<any[]>([]);
-  const [consultas, setConsultas] = useState<any[]>([]);
-  const [slotSelecionado, setSlotSelecionado] = useState<any | null>(null);
+  const [disponibilidades, setDisponibilidades] = useState<DisponibilidadeResponse[]>([]);
+  const [consultas, setConsultas] = useState<ConsultaResponse[]>([]);
+  const [slotSelecionado, setSlotSelecionado] = useState<DisponibilidadeResponse | null>(null);
   const [tipoConsulta, setTipoConsulta] = useState('PRESENCIAL');
   const [feedback, setFeedback] = useState({ error: '', success: '' });
   const pacienteId = user?.pacienteId;
@@ -96,7 +97,6 @@ const PatientDashboard = () => {
         profissionalId: slotSelecionado.profissionalId,
         disponibilidadeId: slotSelecionado.id,
         tipoConsulta,
-        linkAcesso: null,
       });
       setSlotSelecionado(null);
       setTipoConsulta('PRESENCIAL');
@@ -118,7 +118,7 @@ const PatientDashboard = () => {
   };
 
   if (!pacienteId) {
-    return <p className="p-6 text-sm text-red-600">FaÁa login com um usu·rio paciente para acessar o painel.</p>;
+    return <p className="p-6 text-sm text-red-600">Fa√ßa login com um usu√°rio paciente para acessar o painel.</p>;
   }
 
   return (
@@ -132,19 +132,19 @@ const PatientDashboard = () => {
             type="select"
             value={selectedProfissional}
             onChange={(e) => setSelectedProfissional(e.target.value)}
-            options={profissionais.map((prof) => ({ value: prof.id, label: `${prof.nome}${prof.especialidade ? ` ï ${prof.especialidade}` : ''}` }))}
+            options={profissionais.map((prof) => ({ value: prof.id, label: `${prof.nome}${prof.especialidade ? ` ‚Ä¢ ${prof.especialidade}` : ''}` }))}
           />
           <FormField label="De" name="inicio" type="date" value={start} onChange={(e) => setRange((prev) => ({ ...prev, start: e.target.value }))} />
-          <FormField label="AtÈ" name="fim" type="date" value={end} onChange={(e) => setRange((prev) => ({ ...prev, end: e.target.value }))} />
+          <FormField label="At√©" name="fim" type="date" value={end} onChange={(e) => setRange((prev) => ({ ...prev, end: e.target.value }))} />
         </form>
         <div className="mt-4">
           <Table
             columns={[
-              { header: 'Hor·rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
+              { header: 'Hor√°rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
               { header: 'Especialidade', accessor: 'especialidade' },
             ]}
             data={disponibilidades}
-            renderActions={(row: any) => (
+            renderActions={(row: DisponibilidadeResponse) => (
               <button className="text-blue-600 hover:underline" onClick={() => setSlotSelecionado(row)}>
                 Selecionar
               </button>
@@ -171,6 +171,9 @@ const PatientDashboard = () => {
                 { value: 'TELECONSULTA', label: 'Teleconsulta' },
               ]}
             />
+            <p className="text-sm text-slate-500 md:col-span-2">
+              Para teleconsultas, o link ser√° disponibilizado automaticamente ap√≥s a confirma√ß√£o.
+            </p>
             <div className="md:col-span-2 flex gap-2">
               <button type="submit" className="rounded bg-blue-600 px-4 py-2 font-semibold text-white">
                 Confirmar
@@ -187,7 +190,7 @@ const PatientDashboard = () => {
         <h2 className="text-lg font-semibold text-slate-900">Consultas agendadas</h2>
         <Table
           columns={[
-            { header: 'Hor·rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
+            { header: 'Hor√°rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
             { header: 'Profissional', accessor: 'profissionalNome' },
             {
               header: 'Link',
@@ -195,16 +198,16 @@ const PatientDashboard = () => {
               render: (value: string | null) =>
                 value ? (
                   <a href={value} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
-                    Abrir reuni„o
+                    Abrir reuni√£o
                   </a>
                 ) : (
-                  'ó'
+                  '‚Äî'
                 ),
             },
             { header: 'Status', accessor: 'status' },
           ]}
           data={consultas}
-          renderActions={(row: any) =>
+          renderActions={(row: ConsultaResponse) =>
             row.status !== 'CANCELADA' && (
               <button className="text-red-600 hover:underline" onClick={() => handleCancelar(row.id)}>
                 Cancelar

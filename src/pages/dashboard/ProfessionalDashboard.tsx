@@ -1,6 +1,7 @@
 ﻿import { FormEvent, useEffect, useState } from 'react';
 import Table from '../../components/Table';
 import FormField from '../../components/FormField';
+import type { ConsultaResponse, ConsultaStatus, DisponibilidadeResponse } from '../../services/api';
 import {
   createDisponibilidade,
   deleteDisponibilidade,
@@ -22,8 +23,8 @@ const ProfessionalDashboard = () => {
   const { user } = useAuth();
   const profissionalId = user?.profissionalId;
   const [{ start, end }, setRange] = useState(() => buildDateRange(14));
-  const [slots, setSlots] = useState<any[]>([]);
-  const [consultas, setConsultas] = useState<any[]>([]);
+  const [slots, setSlots] = useState<DisponibilidadeResponse[]>([]);
+  const [consultas, setConsultas] = useState<ConsultaResponse[]>([]);
   const [novoSlot, setNovoSlot] = useState('');
   const [feedback, setFeedback] = useState({ error: '', success: '' });
 
@@ -79,7 +80,7 @@ const ProfessionalDashboard = () => {
     }
   };
 
-  const handleStatusChange = async (consultaId: number, status: string) => {
+  const handleStatusChange = async (consultaId: number, status: ConsultaStatus) => {
     try {
       await updateConsultaStatus(consultaId, { status });
       await refreshConsultas();
@@ -112,7 +113,7 @@ const ProfessionalDashboard = () => {
             { header: 'Horário', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
           ]}
           data={slots}
-          renderActions={(row: any) => (
+          renderActions={(row: DisponibilidadeResponse) => (
             <button className="text-red-600 hover:underline" onClick={() => handleExcluirSlot(row.id)}>
               Remover
             </button>
@@ -141,11 +142,11 @@ const ProfessionalDashboard = () => {
             { header: 'Status', accessor: 'status' },
           ]}
           data={consultas}
-          renderActions={(row: any) => (
+          renderActions={(row: ConsultaResponse) => (
             <select
               className="rounded border border-slate-300 px-2 py-1 text-xs"
               value={row.status}
-              onChange={(e) => handleStatusChange(row.id, e.target.value)}
+              onChange={(e) => handleStatusChange(row.id, e.target.value as ConsultaStatus)}
             >
               {statusOptions.map((option) => (
                 <option key={option.value} value={option.value}>

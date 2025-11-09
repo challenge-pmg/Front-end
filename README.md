@@ -59,6 +59,30 @@ npm run build
 RepositÃ³rio: [https://github.com/challenge-pmg/Front-end.git]
 
 VÃ­deo Demo: [https://www.youtube.com/watch?v=T-LoQZWZnUQ]
+
+## Atualização HC Teleconsulta (nov/2025)
+- **Base da API**: `https://hc-teleonsulta-api-java-1.onrender.com` (já configurada em `.env.local` e nas variáveis da Vercel). Sempre reinicie `npm run dev` após mudar o valor.
+- **Links de teleconsulta automáticos**: o backend agora gera `linkAcesso` quando `tipoConsulta = TELECONSULTA`. Os formulários de paciente/profissional não exibem mais campos de link; basta escolher o slot e confirmar. Consultas presenciais continuam exibindo `linkAcesso = null`.
+- **Mensagens de erro 400**: `POST /auth/login` e `POST /consultas` retornam textos descritivos (ex.: “Paciente sem cadastro”). O front já mostra o `err.message`, então valide sempre no navegador.
+- **Carga oficial**: `db/ddl/load_sample_data.sql` cria dados em 2030, com três pacientes e dois profissionais.
+
+### Logins oficiais (dados de teste)
+| Perfil | Email | Senha |
+| --- | --- | --- |
+| Paciente | ana.paciente@hc.com | 123456 |
+| Paciente | bruno.paciente@hc.com | 123456 |
+| Paciente | carla.paciente@hc.com | 123456 |
+| Profissional | henrique.prof@hc.com | 123456 |
+| Profissional | marina.prof@hc.com | 123456 |
+
+> Dica: copie um desses logins na tela de autenticação ou selecione-os na lista de exemplos do `/login`.
+
+### Como validar rapidamente
+1. `npm install && npm run dev`.
+2. Faça login como paciente, abra “Minhas consultas” e confirme que o botão **Abrir reunião** aparece apenas quando a API devolve `linkAcesso`.
+3. Faça login como profissional, cadastre um slot via `/disponibilidades` e marque/cancele consultas. O link exibido também vem diretamente da API.
+4. Caso ocorra erro de CORS/fetch, garanta que todas as abas foram recarregadas usando a nova base e, se necessário, limpe cache/service workers do navegador.
+
 ## API HC Teleconsulta – Páginas adicionadas pela Sprint 4
 - **Usuários**: listagem, criação, detalhe/edição e remoção usando `/usuarios`.
 - **Pacientes**: CRUD completo com bloqueio visual para pacientes acessarem apenas o próprio cadastro.
