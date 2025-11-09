@@ -1,4 +1,4 @@
-Ôªøimport { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import Table from '../../components/Table';
 import FormField from '../../components/FormField';
 import {
@@ -19,7 +19,7 @@ const PatientDashboard = () => {
   const [disponibilidades, setDisponibilidades] = useState<any[]>([]);
   const [consultas, setConsultas] = useState<any[]>([]);
   const [slotSelecionado, setSlotSelecionado] = useState<any | null>(null);
-  const [consultaForm, setConsultaForm] = useState({ tipoConsulta: 'PRESENCIAL', linkAcesso: '' });
+  const [tipoConsulta, setTipoConsulta] = useState('PRESENCIAL');
   const [feedback, setFeedback] = useState({ error: '', success: '' });
   const pacienteId = user?.pacienteId;
 
@@ -95,11 +95,11 @@ const PatientDashboard = () => {
         pacienteId,
         profissionalId: slotSelecionado.profissionalId,
         disponibilidadeId: slotSelecionado.id,
-        tipoConsulta: consultaForm.tipoConsulta,
-        linkAcesso: consultaForm.tipoConsulta === 'TELECONSULTA' ? consultaForm.linkAcesso : null,
+        tipoConsulta,
+        linkAcesso: null,
       });
       setSlotSelecionado(null);
-      setConsultaForm({ tipoConsulta: 'PRESENCIAL', linkAcesso: '' });
+      setTipoConsulta('PRESENCIAL');
       await refreshConsultas();
       setFeedback({ error: '', success: 'Consulta agendada com sucesso!' });
     } catch (error: any) {
@@ -118,7 +118,7 @@ const PatientDashboard = () => {
   };
 
   if (!pacienteId) {
-    return <p className="p-6 text-sm text-red-600">Fa√ßa login com um usu√°rio paciente para acessar o painel.</p>;
+    return <p className="p-6 text-sm text-red-600">FaÁa login com um usu·rio paciente para acessar o painel.</p>;
   }
 
   return (
@@ -132,15 +132,15 @@ const PatientDashboard = () => {
             type="select"
             value={selectedProfissional}
             onChange={(e) => setSelectedProfissional(e.target.value)}
-            options={profissionais.map((prof) => ({ value: prof.id, label: `${prof.nome}${prof.especialidade ? ` ‚Ä¢ ${prof.especialidade}` : ''}` }))}
+            options={profissionais.map((prof) => ({ value: prof.id, label: `${prof.nome}${prof.especialidade ? ` ï ${prof.especialidade}` : ''}` }))}
           />
           <FormField label="De" name="inicio" type="date" value={start} onChange={(e) => setRange((prev) => ({ ...prev, start: e.target.value }))} />
-          <FormField label="At√©" name="fim" type="date" value={end} onChange={(e) => setRange((prev) => ({ ...prev, end: e.target.value }))} />
+          <FormField label="AtÈ" name="fim" type="date" value={end} onChange={(e) => setRange((prev) => ({ ...prev, end: e.target.value }))} />
         </form>
         <div className="mt-4">
           <Table
             columns={[
-              { header: 'Hor√°rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
+              { header: 'Hor·rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
               { header: 'Especialidade', accessor: 'especialidade' },
             ]}
             data={disponibilidades}
@@ -164,22 +164,13 @@ const PatientDashboard = () => {
               label="Tipo"
               name="tipoConsulta"
               type="select"
-              value={consultaForm.tipoConsulta}
-              onChange={(e) => setConsultaForm((prev) => ({ ...prev, tipoConsulta: e.target.value }))}
+              value={tipoConsulta}
+              onChange={(e) => setTipoConsulta(e.target.value)}
               options={[
                 { value: 'PRESENCIAL', label: 'Presencial' },
                 { value: 'TELECONSULTA', label: 'Teleconsulta' },
               ]}
             />
-            {consultaForm.tipoConsulta === 'TELECONSULTA' && (
-              <FormField
-                label="Link da chamada"
-                name="linkAcesso"
-                value={consultaForm.linkAcesso}
-                onChange={(e) => setConsultaForm((prev) => ({ ...prev, linkAcesso: e.target.value }))}
-                required
-              />
-            )}
             <div className="md:col-span-2 flex gap-2">
               <button type="submit" className="rounded bg-blue-600 px-4 py-2 font-semibold text-white">
                 Confirmar
@@ -196,8 +187,20 @@ const PatientDashboard = () => {
         <h2 className="text-lg font-semibold text-slate-900">Consultas agendadas</h2>
         <Table
           columns={[
-            { header: 'Hor√°rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
+            { header: 'Hor·rio', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
             { header: 'Profissional', accessor: 'profissionalNome' },
+            {
+              header: 'Link',
+              accessor: 'linkAcesso',
+              render: (value: string | null) =>
+                value ? (
+                  <a href={value} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                    Abrir reuni„o
+                  </a>
+                ) : (
+                  'ó'
+                ),
+            },
             { header: 'Status', accessor: 'status' },
           ]}
           data={consultas}

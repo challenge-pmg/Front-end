@@ -126,6 +126,18 @@ const ProfessionalDashboard = () => {
           columns={[
             { header: 'Paciente', accessor: 'pacienteNome' },
             { header: 'Horário', accessor: 'dataHora', render: (value: string) => formatDateTime(value) },
+            {
+              header: 'Link',
+              accessor: 'linkAcesso',
+              render: (value: string | null) =>
+                value ? (
+                  <a href={value} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+                    Abrir reunião
+                  </a>
+                ) : (
+                  '—'
+                ),
+            },
             { header: 'Status', accessor: 'status' },
           ]}
           data={consultas}

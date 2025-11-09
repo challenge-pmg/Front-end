@@ -76,7 +76,7 @@ npm run dev
 ### Variável opcional
 Crie um arquivo `.env.local` (ou `.env`) com:
 ```
-VITE_API_BASE_URL=https://hc-teleonsulta-api-java.onrender.com
+VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
 ```
 Sem essa variável o app usa automaticamente a URL acima.
 
@@ -111,7 +111,7 @@ Sem essa variável o app usa automaticamente a URL acima.
 
 ### Variáveis de ambiente
 `
-VITE_API_BASE_URL=https://hc-teleonsulta-api-java.onrender.com
+VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
 VITE_FUNCIONARIO_CODE=HC-ACCESS
 `
 > Dica: durante o desenvolvimento você pode remover VITE_API_BASE_URL para usar o proxy /teleconsulta-api configurado no Vite.
@@ -135,7 +135,7 @@ pm run build garante que o bundle (Vite) continua íntegro e pronto para deploy.
 
 ### Ambiente
 ```
-VITE_API_BASE_URL=https://hc-teleonsulta-api-java.onrender.com
+VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com
 VITE_FUNCIONARIO_CODE=HC-ACCESS
 ```
 
@@ -149,4 +149,4 @@ VITE_FUNCIONARIO_CODE=HC-ACCESS
 - `npm run test`
 - `npm run build`
 **Backend remoto**
-Defina `VITE_API_BASE_URL=https://hc-teleonsulta-api-java.onrender.com` tanto no `.env.local` quanto nas variáveis da Vercel para que o front use sempre a mesma API (sem proxy local). O proxy `/teleconsulta-api` permanece disponível apenas como fallback.
+Defina `VITE_API_BASE_URL=https://hc-teleonsulta-api-java-1.onrender.com` tanto no `.env.local` quanto nas variáveis da Vercel para que o front use sempre a mesma API (sem proxy local). O proxy `/teleconsulta-api` permanece disponível apenas como fallback.

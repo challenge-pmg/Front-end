@@ -1,4 +1,4 @@
-﻿const DEFAULT_API = 'https://hc-teleonsulta-api-java.onrender.com';
+﻿const DEFAULT_API = 'https://hc-teleonsulta-api-java-1.onrender.com';
 const rawBase = import.meta.env.VITE_API_BASE_URL?.trim();
 export const API_BASE = rawBase || DEFAULT_API;
 
@@ -34,11 +34,23 @@ const getStoredSession = () => {
 };
 
 const buildError = async (response: Response) => {
-  const body = await response.text();
+  const text = await response.text();
+  let parsed: any = text;
+  try {
+    parsed = text ? JSON.parse(text) : null;
+  } catch {
+    parsed = text;
+  }
+
+  const message =
+    (parsed && typeof parsed === 'object' && 'message' in parsed && parsed.message) ||
+    STATUS_MESSAGES[response.status as keyof typeof STATUS_MESSAGES] ||
+    'Erro no servidor';
+
   return {
     status: response.status,
-    message: STATUS_MESSAGES[response.status as keyof typeof STATUS_MESSAGES] || 'Erro no servidor',
-    body,
+    message,
+    body: parsed,
   };
 };
 
