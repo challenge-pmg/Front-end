@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* pequenas customizações para parecer com o estilo original */
-body { @apply bg-slate-50 text-slate-800; }
-.container { @apply max-w-6xl mx-auto; }
+body {
+  @apply bg-light text-dark font-sans;
+}
+
+h1, h2, h3 {
+  @apply font-title;
+}
