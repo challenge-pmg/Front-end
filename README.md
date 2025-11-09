@@ -8,7 +8,7 @@ Aplicação SPA em React + Vite + TypeScript responsável por consumir a API Jav
 - **API Java (Render):** https://hc-teleonsulta-api-java-1.onrender.com
   - OpenAPI: https://hc-teleonsulta-api-java-1.onrender.com/q/openapi
   - Swagger UI: https://hc-teleonsulta-api-java-1.onrender.com/q/swagger-ui/
-- **Vídeo (YouTube):** https://www.youtube.com/watch?v=T-LoQZWZnUQ
+- **Vídeo (YouTube):** https://www.youtube.com/watch?v=p7-iea1Cgkk
 
 ## 🧰 Stack principal
 - React 18 + Vite + TypeScript
