@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
@@ -10,6 +10,16 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import Login from './pages/Login'
 import PatientDashboard from './pages/dashboard/PatientDashboard'
 import ProfessionalDashboard from './pages/dashboard/ProfessionalDashboard'
+import { fetchJson } from './services/api'
+
+const ApiWarmup: React.FC = () => {
+  useEffect(() => {
+    fetchJson('/hello', {}, { requireAuth: false, retries: 0 }).catch(() => {
+      // Ignora falhas: será tentado novamente quando o usuário fizer ações reais
+    })
+  }, [])
+  return null
+}
 
 const RequireAuth: React.FC<{ children: React.ReactElement }> = ({ children }) => {
   const { user } = useAuth()
@@ -34,6 +44,7 @@ export default function App(){
   return (
     <AuthProvider>
       <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800">
+        <ApiWarmup />
         <Header />
         <main className="flex-1">
           <Routes>

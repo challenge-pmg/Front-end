@@ -19,6 +19,8 @@ export const SESSION_STORAGE_KEYS = {
   profissionalId: 'hc-teleconsulta-profissional-id',
 };
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const getStoredSession = () => {
   if (typeof window === 'undefined') return null;
   const userId = window.localStorage.getItem(SESSION_STORAGE_KEYS.userId);
@@ -54,62 +56,82 @@ const buildError = async (response: Response) => {
   };
 };
 
+type FetchConfig = {
+  requireAuth?: boolean;
+  timeoutMs?: number;
+  retries?: number;
+  retryDelayMs?: number;
+};
+
 export async function fetchJson(
   path: string,
   options: RequestInit = {},
-  { requireAuth = true, timeoutMs = 15000 } = {},
+  { requireAuth = true, timeoutMs = 15000, retries = 1, retryDelayMs = 1500 }: FetchConfig = {},
 ) {
   const storedUser = getStoredSession();
   if (requireAuth && !storedUser) {
     throw { status: 401, message: STATUS_MESSAGES[401], body: null };
   }
 
-  const headers = new Headers(options.headers || {});
-  if (options.body && !(options.body instanceof FormData)) {
-    headers.set('Content-Type', 'application/json');
-  }
-  if (storedUser?.userId) {
-    headers.set('X-User-Id', String(storedUser.userId));
-    if (storedUser.role) headers.set('X-User-Role', storedUser.role);
-  }
+  const isFormDataBody = typeof FormData !== 'undefined' && options.body instanceof FormData;
+  const preparedBody =
+    options.body && typeof options.body === 'object' && !isFormDataBody ? JSON.stringify(options.body) : options.body;
+  const maxRetries = isFormDataBody ? 0 : Math.max(0, retries);
 
-  const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-  const timeoutId = controller ? setTimeout(() => controller.abort(), timeoutMs) : undefined;
-
-  const fetchOptions: RequestInit = {
-    ...options,
-    headers,
-    signal: controller?.signal ?? options.signal,
-    body:
-      options.body && typeof options.body === 'object' && !(options.body instanceof FormData)
-        ? JSON.stringify(options.body)
-        : options.body,
-  };
-
-  try {
-    const response = await fetch(`${API_BASE}${path}`, fetchOptions);
-
-    if (response.status === 204) {
-      return { ok: true };
+  let attempt = 0;
+  while (attempt <= maxRetries) {
+    const headers = new Headers(options.headers || {});
+    if (preparedBody && !isFormDataBody) {
+      headers.set('Content-Type', 'application/json');
+    }
+    if (storedUser?.userId) {
+      headers.set('X-User-Id', String(storedUser.userId));
+      if (storedUser.role) headers.set('X-User-Role', storedUser.role);
     }
 
-    if (response.ok) {
-      const contentType = response.headers.get('Content-Type') || '';
-      if (contentType.includes('application/json')) {
-        return response.json();
+    const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    const timeoutId = controller ? setTimeout(() => controller.abort(), timeoutMs) : undefined;
+
+    const fetchOptions: RequestInit = {
+      ...options,
+      headers,
+      signal: controller?.signal ?? options.signal,
+      body: preparedBody,
+    };
+
+    try {
+      const response = await fetch(`${API_BASE}${path}`, fetchOptions);
+
+      if (response.status === 204) {
+        return { ok: true };
       }
-      return response.text();
-    }
 
-    throw await buildError(response);
-  } catch (error: any) {
-    if (error?.name === 'AbortError') {
-      throw { status: 0, message: 'Tempo limite excedido. Tente novamente.', body: null };
-    }
-    throw error;
-  } finally {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
+      if (response.ok) {
+        const contentType = response.headers.get('Content-Type') || '';
+        if (contentType.includes('application/json')) {
+          return response.json();
+        }
+        return response.text();
+      }
+
+      throw await buildError(response);
+    } catch (error: any) {
+      const timedOut = error?.name === 'AbortError';
+      const networkFailure = error && typeof error === 'object' && !('status' in error);
+      if ((timedOut || networkFailure) && attempt < maxRetries) {
+        attempt += 1;
+        if (timeoutId) clearTimeout(timeoutId);
+        await delay(retryDelayMs);
+        continue;
+      }
+      if (timedOut) {
+        throw { status: 0, message: 'Tempo limite excedido. Tente novamente.', body: null };
+      }
+      throw error;
+    } finally {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
     }
   }
 }
