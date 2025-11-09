@@ -117,7 +117,7 @@ Todas as chamadas usam fetch nativo e `fetchJson` (timeout + retry + mapeamento 
 
 ## ▶️ Vídeo
 Apresentação de até 3 minutos mostrando funcionalidades, layout responsivo e integração com a API:  
-https://www.youtube.com/watch?v=T-LoQZWZnUQ
+https://www.youtube.com/watch?v=p7-iea1Cgkk
 
 ---
 Em caso de dúvidas sobre ambiente, testes ou integrações adicionais, consulte este README ou abra uma issue no repositório. Boas contribuições!
